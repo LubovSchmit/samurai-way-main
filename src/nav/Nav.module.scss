@@ -1,0 +1,5 @@
+@import 'src/commun/styles/sass/mixins';
+
+.nav {
+  @include flex(column, space-around, center, wrap);
+  }
