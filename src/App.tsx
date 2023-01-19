@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './App.module.scss';
-import {Header} from './header/Header';
-import {Profile} from './profile/Profile';
-import {Nav} from './nav/Nav';
-import {Main} from './main/Main';
-import {Footer} from './footer/Footer';
+import {Header} from './pages/header/Header';
+import {Main} from './pages/main/Main';
+import {Footer} from './pages/footer/Footer';
+
 
 function App() {
     return (
