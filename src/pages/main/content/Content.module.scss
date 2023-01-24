@@ -1,0 +1,6 @@
+@import '../../../commun/styles/sass/mixins';
+
+.contentBlock {
+  @include flex(column, space-around, center, wrap);
+  height: 100%;
+}

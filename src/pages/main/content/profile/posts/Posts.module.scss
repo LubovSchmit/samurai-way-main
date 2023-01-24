@@ -1,0 +1,30 @@
+@import '../../../../../commun/styles/sass/mixins';
+
+.postsContainer {
+  background-color: orangered;
+
+  .textareaButtonContainer {
+    @include flex(row, center, center, wrap);
+
+    .textarea {
+      background-color: burlywood;
+    }
+
+    .button {
+      background-color: chocolate;
+    }
+  }
+
+  .posts {
+    @include flex(column, space-around, center, wrap);
+    background-color: aquamarine;
+    width: 100%;
+    height: 100%;
+    overflow-wrap: break-word;
+
+    .item {
+      border: 1px solid black;
+      width: 100%;
+    }
+  }
+}

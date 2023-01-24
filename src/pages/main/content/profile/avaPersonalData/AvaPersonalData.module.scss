@@ -1,0 +1,23 @@
+@import '../../../../../commun/styles/sass/mixins';
+
+
+.PersonalContainer {
+  background-color: darkslateblue;
+  height: 100%;
+  width: 100%;
+  @include flex(row, space-between, center, wrap);
+
+  .avaBlock {
+    flex: 1;
+    background-image: url('./../../../../../assets/images/ava.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px;
+  }
+
+  .personalDataBlock:nth-of-type(2) {
+    flex: 6;
+    width: 100%;
+  }
+}

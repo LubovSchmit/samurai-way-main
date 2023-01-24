@@ -1,0 +1,26 @@
+@import '../../../../commun/styles/sass/mixins';
+
+.profileContainer {
+  text-align: center;
+  background-color: coral;
+  border: 2px solid blue;
+  height: 100%;
+  width: 100%;
+
+  @include flex(column, space-between, center, wrap);
+
+  .coverBlock {
+    flex: 1;
+    background-image: url('../../../../assets/images/cover1.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+
+  }
+
+  .personalInfo:nth-of-type(2) {
+    flex: 4;
+    width: 100%;
+
+  }
+}

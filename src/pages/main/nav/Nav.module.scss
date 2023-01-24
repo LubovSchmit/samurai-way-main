@@ -1,0 +1,19 @@
+@import '../../../commun/styles/sass/mixins';
+
+.nav {
+  @include flex(column, center, center, wrap);
+  height: 100%;
+  width: 100%;
+
+  .hrefContainer {
+    @include flex(column, flex-start, center, wrap);
+    height: 100%;
+    width: 100%;
+
+    .href {
+      text-align: center;
+
+    }
+  }
+
+}

@@ -1,0 +1,10 @@
+@import '../../../../commun/styles/sass/mixins';
+
+
+.settingsContainer {
+  @include flex(column, flex-start, center, wrap);
+  background-color: darkkhaki;
+  border: 3px solid orangered;
+  width: 100%;
+  height: 100%;
+}

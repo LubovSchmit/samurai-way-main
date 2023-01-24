@@ -1,0 +1,5 @@
+@import '../../../../../../commun/styles/sass/mixins';
+
+.personalDataContainer {
+  @include flex(column, space-around, center, wrap);
+}
