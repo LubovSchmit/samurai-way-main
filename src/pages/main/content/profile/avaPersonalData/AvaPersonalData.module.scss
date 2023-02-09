@@ -2,7 +2,8 @@
 
 
 .PersonalContainer {
-  background-color: darkslateblue;
+  margin-top: 10px;
+  background-color: darkgoldenrod;
   height: 100%;
   width: 100%;
   @include flex(row, space-between, center, wrap);
@@ -14,10 +15,17 @@
     background-position: center;
     width: 100%;
     height: 200px;
+
+    margin: 10px;
+
   }
 
   .personalDataBlock:nth-of-type(2) {
     flex: 6;
     width: 100%;
+    border: 1px solid blue;
+    background-color: orange;
+    margin: 10px;
+
   }
 }

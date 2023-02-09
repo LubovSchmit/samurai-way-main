@@ -10,17 +10,17 @@ export const Nav = () => {
         <div className={style.nav}>
 
             <div className={style.hrefContainer}>
-                <div className={style.href}>
-                    <NavLink to={'/profile'}>Profile</NavLink>
+                <div className={style.link}>
+                    <NavLink to={'/profile'} activeClassName={style.active}>Profile</NavLink>
                 </div>
-                <div className={style.href}>
-                    <NavLink to={'/posts'}>Posts</NavLink>
+                <div className={style.link}>
+                    <NavLink to={'/posts'} activeClassName={style.active}>Posts</NavLink>
                 </div>
-                <div className={style.href}>
-                    <NavLink to={'/dialogs'}>Dialogs</NavLink>
+                <div className={style.link}>
+                    <NavLink to={'/dialogs'} activeClassName={style.active}>Dialogs</NavLink>
                 </div>
-                <div className={style.href}>
-                    <NavLink to={'/settings'}>Settings</NavLink>
+                <div className={style.link}>
+                    <NavLink to={'/settings'} activeClassName={style.active}>Settings</NavLink>
                 </div>
 
             </div>

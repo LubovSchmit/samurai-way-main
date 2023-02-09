@@ -9,10 +9,16 @@
     @include flex(column, flex-start, center, wrap);
     height: 100%;
     width: 100%;
+    padding-top: 20px;
 
-    .href {
+    .link a {
       text-align: center;
+      color: white;
+      text-decoration: none;
+    }
 
+    .link a.active {
+      color: gold;
     }
   }
 

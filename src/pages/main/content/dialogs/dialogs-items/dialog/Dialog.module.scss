@@ -1,0 +1,21 @@
+@import '../../../../../../commun/styles/sass/mixins';
+
+
+.dialogContainer {
+  @include flex(column, flex-start, center, wrap);
+  background-color: khaki;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+
+  .dialog {
+    border: 1px solid green;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+
+
+  }
+
+}

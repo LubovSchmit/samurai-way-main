@@ -1,10 +1,10 @@
 import style from './Post.module.scss';
-import {Ava} from '../../avaPersonalData/ava/Ava';
+import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 
 
 type PostType = {
-   /* id: number*/
     message: string
+    likesCount: number
 }
 
 
@@ -18,6 +18,11 @@ export const Post = (props: PostType) => {
 
             <div className={style.text}>
                 {props.message}
+            </div>
+
+            <div className={style.likesContainer}>
+                <div className={style.likeImg}></div>
+                <div className={style.likesCount}>{props.likesCount}</div>
             </div>
 
         </div>

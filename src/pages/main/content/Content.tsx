@@ -3,18 +3,19 @@ import style from './Content.module.scss';
 import {Profile} from './profile/Profile';
 import {Dialogs} from './dialogs/Dialogs';
 import {Route} from 'react-router-dom';
-import {Posts} from './posts/Posts';
 import {Settings} from './settings/Settings';
+import {Posts} from './posts/Posts';
+
 
 
 export const Content = () => {
     return (
         <div id="content" className={style.contentBlock}>
 
-            <Route path="/profile" component={Profile}/>
-            <Route path="/posts" component={Posts}/>
-            <Route path="/dialogs" component={Dialogs}/>
-            <Route path="/settings" component={Settings}/>
+            <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/posts" component={Posts}/>
+            <Route exact path="/dialogs" component={Dialogs}/>
+            <Route exact path="/settings" component={Settings}/>
 
         </div>
     )
