@@ -1,6 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import {NavLink, Route} from 'react-router-dom';
 import style from './Nav.module.scss';
+import {Dialogs} from '../content/dialogs/Dialogs';
+import {Main} from '../Main';
+import {Profile} from '../content/profile/Profile';
+import {Posts} from '../content/posts/Posts';
+import {Settings} from '../content/settings/Settings';
 
 
 export const Nav = () => {
@@ -24,6 +29,8 @@ export const Nav = () => {
                 </div>
 
             </div>
+
+
 
         </div>
     )

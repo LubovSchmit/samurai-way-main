@@ -1,12 +1,7 @@
-.app {
-/*  position: relative;*/
+@import './commun/styles/sass/mixins';
 
-
-/*  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;*/
+.appBlock {
+  @include flex(column, center, space-between, wrap);
 }
 
 
