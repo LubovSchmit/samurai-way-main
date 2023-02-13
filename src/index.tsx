@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {Dialogs} from './pages/main/content/dialogs/Dialogs';
+import {BrowserRouter} from 'react-router-dom';
+import state from './../src/redux/state';
+
+
 
 ReactDOM.render(
     <BrowserRouter>
-        <App/>
+
+        <App state={state}/>
 
     </BrowserRouter>,
     document.getElementById('root')

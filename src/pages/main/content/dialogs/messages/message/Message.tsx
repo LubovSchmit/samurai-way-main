@@ -2,14 +2,12 @@ import React from 'react';
 import style from './Message.module.scss';
 
 
-type MessagePropsType = {
-    message: string
+type PropsType = {
+    message: string,
     id: string
-
 }
 
-
-export const Message = (props: MessagePropsType) => {
+export const Message = (props: PropsType) => {
     return (
         <div className={style.messageContainer}>
 

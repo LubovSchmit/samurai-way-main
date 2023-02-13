@@ -5,14 +5,20 @@ import {Dialogs} from './dialogs/Dialogs';
 import {Route} from 'react-router-dom';
 import {Settings} from './settings/Settings';
 import {Posts} from './posts/Posts';
+import {StatePropsType} from '../../../redux/state';
 
 
-export const Content = () => {
+type PropsType = {
+    state: StatePropsType
+}
+
+export const Content = (props: PropsType) => {
+
     return (
         <div id="content" className={style.contentBlock}>
             <Route exact path={'/profile'} render={() => <Profile/>}/>
-            <Route exact path={'/posts'} render={() => <Posts/>}/>
-            <Route exact path={'/dialogs'} render={() => <Dialogs/>}/>
+            <Route exact path={'/posts'} render={() => <Posts posts={props.state.posts}/>}/>
+            <Route exact path={'/dialogs'} render={() => <Dialogs dialogNames={props.state.dialogNames} messages={props.state.messages}/>}/>
             <Route exact path={'/settings'} render={() => <Settings/>}/>
         </div>
     )

@@ -3,14 +3,22 @@ import style from './Main.module.scss';
 import {Nav} from './nav/Nav';
 import {Content} from './content/Content';
 import {ButtonNav} from './nav/buttonNav/ButtonNav';
+import {StatePropsType} from '../../redux/state';
 
 
 
-export const Main = () => {
+
+
+
+
+type PropsType = {
+    state: StatePropsType
+}
+
+export const Main = (props: PropsType) => {
     return (
 
         <div id="main" className={style.mainBlock}>
-
             <div className={style.mainContainer}>
 
                 <div className={style.nav}>
@@ -19,7 +27,7 @@ export const Main = () => {
                 </div>
 
                 <div className={style.content}>
-                    <Content/>
+                    <Content state={props.state}/>
                 </div>
 
             </div>

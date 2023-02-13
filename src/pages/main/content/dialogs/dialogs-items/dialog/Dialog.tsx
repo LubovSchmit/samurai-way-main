@@ -3,20 +3,18 @@ import {NavLink} from 'react-router-dom';
 import style from './Dialog.module.scss';
 
 
-type DialogPropsType = {
-    name: string
-    id: string
 
+
+type PropsType = {
+    key: string,
+    name: string,
+    id: string
 }
 
 
-export const Dialog = (props: DialogPropsType) => {
+export const Dialog = (props: PropsType) => {
     return (
         <div className={style.dialogContainer}>
-
-
-
-
 
             <div className={style.dialog}>
 

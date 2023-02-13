@@ -2,13 +2,16 @@ import style from './Post.module.scss';
 import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 
 
-type PostType = {
+
+
+
+type PropsType = {
+    key: string
     message: string
     likesCount: number
 }
 
-
-export const Post = (props: PostType) => {
+export const Post = (props: PropsType) => {
     return (
         <div className={style.postContainer}>
 
