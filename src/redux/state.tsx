@@ -2,7 +2,6 @@ import React from 'react';
 import {v1} from 'uuid';
 
 
-
 export type DialogNameType = {
     name: string
     id: string
@@ -18,14 +17,25 @@ export type PostType = {
     likesCount: number
 }
 
-export type StatePropsType = {
-    dialogNames: Array<DialogNameType>,
-    messages: Array<MessagePropsType>,
+
+
+export type postsPageType = {
     posts: Array<PostType>
 }
 
-    let state = {
-        posts:  [
+export type dialogsPage = {
+    dialogNames: Array<DialogNameType>,
+    messages: Array<MessagePropsType>,
+}
+
+export type StatePropsType = {
+    postsPage: postsPageType,
+    dialogsPage: dialogsPage
+}
+
+let state = {
+    postsPage: {
+        posts: [
             {
                 id: v1(),
                 message: 'Le premier exemple de ce livre affiche hello, world (sans majuscule ni point final, mais avec une virgule et un retour à la ligne terminal). Le premier hello world dont Kernighan et Ritchie se souviennent provient d’un manuel d’apprentissage du langage B écrit par Kernighan',
@@ -45,21 +55,27 @@ export type StatePropsType = {
             },
 
         ],
-        messages:[
+
+    },
+    dialogsPage: {
+        dialogNames: [
+            {id: v1(), name: 'Luba'},
+            {id: v1(), name: 'Leon'},
+            {id: v1(), name: 'Pierre'},
+            {id: v1(), name: 'Mira'},
+            {id: v1(), name: 'Familichka'}
+        ],
+        messages: [
             {id: v1(), message: 'Je veux faire dodooooo...'},
             {id: v1(), message: 'Nan!!!! Je veux pas!'},
             {id: v1(), message: 'Il est ou mon portable??'},
             {id: v1(), message: 'Jules, tu es ou?'},
             {id: v1(), message: 'Coucou tout le monde! A quelle heure on va manger?'}
         ],
-        dialogNames : [
-            {id: v1(), name: 'Luba'},
-            {id: v1(), name: 'Leon'},
-            {id: v1(), name: 'Pierre'},
-            {id: v1(), name: 'Mira'},
-            {id: v1(), name: 'Familichka'}
-        ]
-    }
+
+    },
+
+}
 
 export default state;
 
