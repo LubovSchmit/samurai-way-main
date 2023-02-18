@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {v1} from 'uuid';
 
 
@@ -18,7 +18,6 @@ export type PostType = {
 }
 
 
-
 export type postsPageType = {
     posts: Array<PostType>
 }
@@ -32,6 +31,7 @@ export type StatePropsType = {
     postsPage: postsPageType,
     dialogsPage: dialogsPage
 }
+
 
 let state = {
     postsPage: {
@@ -76,6 +76,14 @@ let state = {
     },
 
 }
+
+export const addPost = (message: string) => {
+    debugger
+    let newPost = {id: v1(), message: message, likesCount: 0}
+  /*  let newPosts = [newPost, ...state.postsPage.posts]*/
+    state.postsPage.posts.push(newPost)
+}
+
 
 export default state;
 

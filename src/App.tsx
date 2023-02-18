@@ -8,7 +8,8 @@ import {StatePropsType} from './redux/state';
 
 
 type PropsType = {
-    state: StatePropsType
+    state: StatePropsType,
+    addPost: (message: string) => void
 }
 
 
@@ -17,7 +18,7 @@ function App(props: PropsType) {
         <div className={style.appBlock}>
 
             <Header/>
-            <Route path={'/'} render={() => <Main state={props.state}/>}/>
+            <Route path={'/'} render={() => <Main state={props.state} addPost={props.addPost}/>}/>
             <Footer/>
 
         </div>

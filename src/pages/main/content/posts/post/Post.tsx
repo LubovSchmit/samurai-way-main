@@ -6,7 +6,7 @@ import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 
 
 type PropsType = {
-    key: string
+    id: string
     message: string
     likesCount: number
 }

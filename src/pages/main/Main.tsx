@@ -6,13 +6,9 @@ import {ButtonNav} from './nav/buttonNav/ButtonNav';
 import {StatePropsType} from '../../redux/state';
 
 
-
-
-
-
-
 type PropsType = {
-    state: StatePropsType
+    state: StatePropsType,
+    addPost: (message: string) => void
 }
 
 export const Main = (props: PropsType) => {
@@ -27,7 +23,8 @@ export const Main = (props: PropsType) => {
                 </div>
 
                 <div className={style.content}>
-                    <Content state={props.state}/>
+                    <Content state={props.state}
+                             addPost={props.addPost}/>
                 </div>
 
             </div>
