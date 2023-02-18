@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {v1} from 'uuid';
+
+
 
 
 export type DialogNameType = {
@@ -19,6 +21,7 @@ export type PostType = {
 
 
 export type postsPageType = {
+    newPostMessage: string
     posts: Array<PostType>
 }
 
@@ -33,8 +36,9 @@ export type StatePropsType = {
 }
 
 
-let state = {
+let state: StatePropsType = {
     postsPage: {
+        newPostMessage: '',
         posts: [
             {
                 id: v1(),
@@ -77,11 +81,21 @@ let state = {
 
 }
 
+let rerenderEntireTree = () => {
+
+}
+
 export const addPost = (message: string) => {
     debugger
-    let newPost = {id: v1(), message: message, likesCount: 0}
+    let newPost: PostType = {id: v1(), message: message, likesCount: 0}
   /*  let newPosts = [newPost, ...state.postsPage.posts]*/
     state.postsPage.posts.push(newPost)
+
+    rerenderEntireTree()
+}
+
+export const subscribe = (observer: ()=> void) => {
+    rerenderEntireTree = observer
 }
 
 
