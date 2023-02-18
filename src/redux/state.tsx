@@ -81,7 +81,7 @@ let state: StatePropsType = {
 
 }
 
-let rerenderEntireTree = () => {
+let rerenderEntireTree = (state: StatePropsType) => {
 
 }
 
@@ -91,10 +91,10 @@ export const addPost = (message: string) => {
   /*  let newPosts = [newPost, ...state.postsPage.posts]*/
     state.postsPage.posts.push(newPost)
 
-    rerenderEntireTree()
+    rerenderEntireTree(state)
 }
 
-export const subscribe = (observer: ()=> void) => {
+export const subscribe = (observer: (state:StatePropsType)=> void) => {
     rerenderEntireTree = observer
 }
 

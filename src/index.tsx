@@ -7,7 +7,7 @@ import App from './App';
 
 
 
-export let rerenderEntireTree = () =>{
+export let rerenderEntireTree = (state: StatePropsType) =>{
     ReactDOM.render(
         <BrowserRouter>
 
@@ -18,6 +18,6 @@ export let rerenderEntireTree = () =>{
         document.getElementById('root'));
 }
 
-rerenderEntireTree();
+rerenderEntireTree(state);
 
 subscribe(rerenderEntireTree)
