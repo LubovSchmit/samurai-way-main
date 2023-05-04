@@ -13,7 +13,8 @@ type PropsType = {
 export const Messages = (props: PropsType) => {
 
 
-    let messagesElements = props.messages.map(m => <Message key={m.id} message={m.message} id={m.id}/>)
+    let messagesElements = props.messages
+        .map(m => <Message key={m.id} id={m.id} message={m.message} />)
 
     return (
         <div className={style.messagesContainer}>

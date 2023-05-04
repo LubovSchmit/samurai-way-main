@@ -16,12 +16,9 @@ type PropsType = {
 
 export const Content = (props: PropsType) => {
 
-
-
-
     return (
         <div id="content" className={style.contentBlock}>
-            <Route exact path={'/profile'} render={() => <Profile/>}/>
+            <Route exact path={'/profile'} render={() => <Profile friends={props.state.profilePage.friends}/>}/>
             <Route exact path={'/posts'} render={() => <Posts posts={props.state.postsPage.posts}
                                                               message={props.state.postsPage.newPostMessage}
                                                               addPost={props.addPost}/>}/>

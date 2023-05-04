@@ -1,3 +1,4 @@
+import React from 'react';
 import style from './Post.module.scss';
 import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 

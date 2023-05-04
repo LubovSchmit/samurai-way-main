@@ -2,7 +2,10 @@ import React from 'react';
 import {v1} from 'uuid';
 import {rerenderEntireTree} from '../index';
 
-
+export type FriendType = {
+    id: string
+    friendName: string
+}
 export type DialogNameType = {
     name: string
     id: string
@@ -18,18 +21,23 @@ export type PostType = {
     likesCount: number
 }
 
+export type profilePageType = {
+    friends: Array<FriendType>
+}
 export type postsPageType = {
     newPostMessage: string
     posts: Array<PostType>
 }
 export type dialogsPage = {
-    dialogNames: Array<DialogNameType>,
-    messages: Array<MessagePropsType>,
+    dialogNames: Array<DialogNameType>
+    messages: Array<MessagePropsType>
 }
 
 export type StatePropsType = {
-    postsPage: postsPageType,
+    profilePage: profilePageType
+    postsPage: postsPageType
     dialogsPage: dialogsPage
+
 }
 
 
@@ -97,7 +105,25 @@ export type StatePropsType = {
 
 let store = {
     _state: {
+        profilePage: {
+            friends: [
+                {
+                    id: v1(),
+                    friendName: 'Nataliya'
+                },
+                {
+                    id: v1(),
+                    friendName: 'Veronika'
+                },
+                {
+                    id: v1(),
+                    friendName: 'Max'
+                }
+            ]
+        },
+
         postsPage: {
+
             newPostMessage: '',
             posts: [
                 {
@@ -121,6 +147,7 @@ let store = {
             ],
 
         },
+
         dialogsPage: {
             dialogNames: [
                 {id: v1(), name: 'Luba'},

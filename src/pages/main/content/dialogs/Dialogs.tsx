@@ -5,9 +5,7 @@ import {Messages} from './messages/Messages';
 import {DialogNameType, MessagePropsType} from '../../../../redux/state';
 
 
-
-
-type PropsType ={
+type PropsType = {
     dialogNames: Array<DialogNameType>,
     messages: Array<MessagePropsType>
 }
