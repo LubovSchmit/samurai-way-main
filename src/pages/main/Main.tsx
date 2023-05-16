@@ -3,12 +3,12 @@ import style from './Main.module.scss';
 import {Nav} from './nav/Nav';
 import {Content} from './content/Content';
 import {ButtonNav} from './nav/buttonNav/ButtonNav';
-import {StatePropsType} from '../../redux/state';
+import {ActionType, StatePropsType} from '../../redux/state';
 
 
 type PropsType = {
     state: StatePropsType,
-    addPost: (message: string) => void
+    dispatch: (action: ActionType) => void
 }
 
 export const Main = (props: PropsType) => {
@@ -24,7 +24,9 @@ export const Main = (props: PropsType) => {
 
                 <div className={style.content}>
                     <Content state={props.state}
-                             addPost={props.addPost}/>
+                             dispatch={props.dispatch}
+
+                    />
                 </div>
 
             </div>

@@ -4,12 +4,13 @@ import {Header} from './pages/header/Header';
 import {Main} from './pages/main/Main';
 import {Footer} from './pages/footer/Footer';
 import {Route} from 'react-router-dom';
-import {StatePropsType} from './redux/state';
+import {ActionType, StatePropsType} from './redux/state';
 
 
 type PropsType = {
     state: StatePropsType,
-    addPost: (message: string) => void
+    dispatch: (action: ActionType) => void
+
 }
 
 
@@ -18,7 +19,9 @@ function App(props: PropsType) {
         <div className={style.appBlock}>
 
             <Header/>
-            <Route path={'/'} render={() => <Main state={props.state} addPost={props.addPost}/>}/>
+            <Route path={'/'} render={() => <Main
+                state={props.state}
+                dispatch={props.dispatch} />}/>
             <Footer/>
 
         </div>

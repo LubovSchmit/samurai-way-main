@@ -5,13 +5,13 @@ import {Dialogs} from './dialogs/Dialogs';
 import {Route} from 'react-router-dom';
 import {Settings} from './settings/Settings';
 import {Posts} from './posts/Posts';
-import {StatePropsType} from '../../../redux/state';
-
+import {ActionType, StatePropsType} from '../../../redux/state';
 
 
 type PropsType = {
     state: StatePropsType,
-    addPost: (message: string) => void
+    dispatch: (action: ActionType) => void
+
 }
 
 export const Content = (props: PropsType) => {
@@ -20,8 +20,10 @@ export const Content = (props: PropsType) => {
         <div id="content" className={style.contentBlock}>
             <Route exact path={'/profile'} render={() => <Profile friends={props.state.profilePage.friends}/>}/>
             <Route exact path={'/posts'} render={() => <Posts posts={props.state.postsPage.posts}
-                                                              message={props.state.postsPage.newPostMessage}
-                                                              addPost={props.addPost}/>}/>
+                                                              postText={props.state.postsPage.newPostText}
+                                                              dispatch={props.dispatch}
+
+            />}/>
             <Route exact path={'/dialogs'} render={() => <Dialogs dialogNames={props.state.dialogsPage.dialogNames}
                                                                   messages={props.state.dialogsPage.messages}/>}/>
             <Route exact path={'/settings'} render={() => <Settings/>}/>

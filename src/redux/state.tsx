@@ -1,6 +1,7 @@
 import React from 'react';
 import {v1} from 'uuid';
-import {rerenderEntireTree} from '../index';
+
+
 
 export type FriendType = {
     id: string
@@ -17,7 +18,7 @@ export type MessagePropsType = {
 }
 export type PostType = {
     id: string
-    message: string
+    postText: string
     likesCount: number
 }
 
@@ -25,7 +26,7 @@ export type profilePageType = {
     friends: Array<FriendType>
 }
 export type postsPageType = {
-    newPostMessage: string
+    newPostText: string
     posts: Array<PostType>
 }
 export type dialogsPage = {
@@ -39,6 +40,113 @@ export type StatePropsType = {
     dialogsPage: dialogsPage
 
 }
+
+const ADD_POST = 'ADD-POST'
+
+let store = {
+    _state: {
+        profilePage: {
+            friends: [
+                {
+                    id: v1(),
+                    friendName: 'Nataliya'
+                },
+                {
+                    id: v1(),
+                    friendName: 'Veronika'
+                },
+                {
+                    id: v1(),
+                    friendName: 'Max'
+                }
+            ]
+        },
+
+        postsPage: {
+
+            newPostText: '',
+            posts: [
+                {
+                    id: v1(),
+                    postText: 'Le premier exemple de ce livre affiche hello, world (sans majuscule ni point final, mais avec une virgule et un retour à la ligne terminal). Le premier hello world dont Kernighan et Ritchie se souviennent provient d’un manuel d’apprentissage du langage B écrit par Kernighan',
+                    likesCount: 23
+                },
+
+                {
+                    id: v1(),
+                    postText: '« Hello world » (traduit littéralement en français par « Bonjour le monde ») sont les mots traditionnellement écrits par un programme informatique simple dont le but est de faire la démonstration rapide de son exécution sans erreur.',
+                    likesCount: 185
+                },
+
+                {
+                    id: v1(),
+                    postText: 'De manière plus large, c\'est le programme le plus simple qu\'on essaie de faire fonctionner lorsqu\'on apprend un nouveau langage de programmation (par exemple à but pédagogique), mais aussi lorsqu\'on met au point ou qu\'on met en œuvre des composants logiciels dans une situation donnée.',
+                    likesCount: 68
+                },
+
+            ],
+
+        },
+
+        dialogsPage: {
+            dialogNames: [
+                {id: v1(), name: 'Luba'},
+                {id: v1(), name: 'Leon'},
+                {id: v1(), name: 'Pierre'},
+                {id: v1(), name: 'Mira'},
+                {id: v1(), name: 'Familichka'}
+            ],
+            messages: [
+                {id: v1(), message: 'Je veux faire dodooooo...'},
+                {id: v1(), message: 'Nan!!!! Je veux pas!'},
+                {id: v1(), message: 'Il est ou mon portable??'},
+                {id: v1(), message: 'Jules, tu es ou?'},
+                {id: v1(), message: 'Coucou tout le monde! A quelle heure on va manger?'}
+            ],
+
+        },
+
+    },
+    _callSubscriber(_state: StatePropsType) {
+        console.log('State changed')
+    },
+    getState() {
+        return this._state
+    },
+    subscribe(observer: (state: StatePropsType) => void) {
+        this._callSubscriber = observer
+    },
+    dispatch(action: ActionType) {
+        if (action.type === 'ADD-POST') {
+            let newPost: PostType = {
+                id: v1(),
+                postText: action.postText,
+                likesCount: 0
+            }
+            this._state.postsPage.newPostText = action.postText
+            this._state.postsPage.posts.push(newPost)
+            this._state.postsPage.newPostText = ''
+            this._callSubscriber(this._state)
+        }
+    }
+}
+
+export type ActionType = AddPostACType
+
+type AddPostACType = {
+    type: 'ADD-POST',
+    postText: string
+}
+export const addPostAC = (newPostMessage: string): AddPostACType => {
+    return {type: ADD_POST, postText: newPostMessage}
+}
+
+export default store;
+/*window.store = store;*/
+
+
+
+
 
 
 /*let state: StatePropsType = {
@@ -101,89 +209,3 @@ export type StatePropsType = {
 /*export const subscribe = (observer: (state: StatePropsType) => void) => {
     rerenderEntireTree = observer
 }*/
-
-
-let store = {
-    _state: {
-        profilePage: {
-            friends: [
-                {
-                    id: v1(),
-                    friendName: 'Nataliya'
-                },
-                {
-                    id: v1(),
-                    friendName: 'Veronika'
-                },
-                {
-                    id: v1(),
-                    friendName: 'Max'
-                }
-            ]
-        },
-
-        postsPage: {
-
-            newPostMessage: '',
-            posts: [
-                {
-                    id: v1(),
-                    message: 'Le premier exemple de ce livre affiche hello, world (sans majuscule ni point final, mais avec une virgule et un retour à la ligne terminal). Le premier hello world dont Kernighan et Ritchie se souviennent provient d’un manuel d’apprentissage du langage B écrit par Kernighan',
-                    likesCount: 23
-                },
-
-                {
-                    id: v1(),
-                    message: '« Hello world » (traduit littéralement en français par « Bonjour le monde ») sont les mots traditionnellement écrits par un programme informatique simple dont le but est de faire la démonstration rapide de son exécution sans erreur.',
-                    likesCount: 185
-                },
-
-                {
-                    id: v1(),
-                    message: 'De manière plus large, c\'est le programme le plus simple qu\'on essaie de faire fonctionner lorsqu\'on apprend un nouveau langage de programmation (par exemple à but pédagogique), mais aussi lorsqu\'on met au point ou qu\'on met en œuvre des composants logiciels dans une situation donnée.',
-                    likesCount: 68
-                },
-
-            ],
-
-        },
-
-        dialogsPage: {
-            dialogNames: [
-                {id: v1(), name: 'Luba'},
-                {id: v1(), name: 'Leon'},
-                {id: v1(), name: 'Pierre'},
-                {id: v1(), name: 'Mira'},
-                {id: v1(), name: 'Familichka'}
-            ],
-            messages: [
-                {id: v1(), message: 'Je veux faire dodooooo...'},
-                {id: v1(), message: 'Nan!!!! Je veux pas!'},
-                {id: v1(), message: 'Il est ou mon portable??'},
-                {id: v1(), message: 'Jules, tu es ou?'},
-                {id: v1(), message: 'Coucou tout le monde! A quelle heure on va manger?'}
-            ],
-
-        },
-
-    },
-    rerenderEntireTree(state: StatePropsType) {
-        console.log('State changed')
-    },
-    getState() {
-        return this._state
-    },
-    addPost(message: string) {
-        let newPost: PostType = {id: v1(), message: message, likesCount: 0}
-        this._state.postsPage.posts.push(newPost)
-        rerenderEntireTree(this._state)
-    },
-    subscribe(observer: (state: StatePropsType) => void) {
-        this.rerenderEntireTree = observer
-    }
-}
-
-
-export default store;
-
-

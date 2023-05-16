@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import style from './Post.module.scss';
 import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 
 
 
-
-
 type PropsType = {
     id: string
-    message: string
+    postText: string
     likesCount: number
 }
 
 export const Post = (props: PropsType) => {
+/*
+
+    let [updatedPostMessage, setUpdatedPostMessage] = useState(props.postText)
+
+    const changeDivToTextarea = () => {
+
+    }
+
+    const updatePostTextHandler = (e: ChangeEvent<HTMLTextAreaElement>)=> {
+        setUpdatedPostMessage(e.currentTarget.value)
+    }
+*/
+
+
     return (
         <div className={style.postContainer}>
 
@@ -20,8 +32,8 @@ export const Post = (props: PropsType) => {
                 <Ava/>
             </div>
 
-            <div className={style.text}>
-                {props.message}
+            <div className={style.text} >
+                {props.postText}
             </div>
 
             <div className={style.likesContainer}>

@@ -5,14 +5,13 @@ import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 
 
-
-
-export let rerenderEntireTree = (state: StatePropsType) =>{
+export let rerenderEntireTree = (state: StatePropsType) => {
     ReactDOM.render(
         <BrowserRouter>
 
             <App state={state}
-                 addPost = {store.addPost.bind(store)}/>
+                 dispatch={store.dispatch.bind(store)}
+                 />
 
         </BrowserRouter>,
         document.getElementById('root'));
