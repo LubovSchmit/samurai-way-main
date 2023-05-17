@@ -13,10 +13,15 @@ type PropsType = {
 
 
 export const Posts = (props: PropsType) => {
+
     let [newPostMessage, setNewPostMessage] = useState('')
 
     let postsElements = props.posts.map(p => <Post key={p.id} id={p.id} postText={p.postText}
                                                    likesCount={p.likesCount}/>)
+
+    const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setNewPostMessage(e.currentTarget.value)
+    }
 
     const addPostMessageHandler = () => {
         if (newPostMessage.trim() === '') return
@@ -24,9 +29,6 @@ export const Posts = (props: PropsType) => {
         setNewPostMessage('')
     }
 
-    const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setNewPostMessage(e.currentTarget.value)
-    }
 
     return (
         <div className={style.postsContainer}>
@@ -34,6 +36,7 @@ export const Posts = (props: PropsType) => {
             <div className={style.textareaButtonContainer}>
 
                 <textarea className={style.textarea}
+                          placeholder={'Enter your post'}
                           value={newPostMessage}
                           onChange={onChangeTextareaHandler}>''</textarea>
 

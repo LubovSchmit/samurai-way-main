@@ -156,7 +156,7 @@ const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
 export const addPostAC = (newPostMessage: string): AddPostACType => {
     return {type: ADD_POST, postText: newPostMessage}
 }
-export const updateNewMessageDialogBodyAC = (newDialogBodyMessage: string): UpdateNewMessageDialogBodyACType => {
+export const addMessageAC = (newDialogBodyMessage: string): UpdateNewMessageDialogBodyACType => {
     return {type: UPDATE_NEW_MESSAGE_BODY, dialogMessageBody: newDialogBodyMessage}
 }
 

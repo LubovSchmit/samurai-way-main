@@ -25,7 +25,8 @@ export const Content = (props: PropsType) => {
 
             />}/>
             <Route exact path={'/dialogs'} render={() => <Dialogs dialogNames={props.state.dialogsPage.dialogNames}
-                                                                  messages={props.state.dialogsPage.messages}/>}/>
+                                                                  messages={props.state.dialogsPage.messages}
+                                                                  dispatch={props.dispatch}/>}/>
             <Route exact path={'/settings'} render={() => <Settings/>}/>
         </div>
     )
