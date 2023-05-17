@@ -2,7 +2,6 @@ import React from 'react';
 import {v1} from 'uuid';
 
 
-
 export type FriendType = {
     id: string
     friendName: string
@@ -12,10 +11,10 @@ export type DialogNameType = {
     id: string
 }
 export type MessagePropsType = {
-    message: string
     id: string
-
+    message: string
 }
+
 export type PostType = {
     id: string
     postText: string
@@ -41,7 +40,6 @@ export type StatePropsType = {
 
 }
 
-const ADD_POST = 'ADD-POST'
 
 let store = {
     _state: {
@@ -103,6 +101,7 @@ let store = {
                 {id: v1(), message: 'Jules, tu es ou?'},
                 {id: v1(), message: 'Coucou tout le monde! A quelle heure on va manger?'}
             ],
+            newMessageDialogBody: ''
 
         },
 
@@ -117,7 +116,7 @@ let store = {
         this._callSubscriber = observer
     },
     dispatch(action: ActionType) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost: PostType = {
                 id: v1(),
                 postText: action.postText,
@@ -127,26 +126,42 @@ let store = {
             this._state.postsPage.posts.push(newPost)
             this._state.postsPage.newPostText = ''
             this._callSubscriber(this._state)
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            let newDialogMessage: MessagePropsType = {
+                id: v1(),
+                message: action.dialogMessageBody
+            }
+            this._state.dialogsPage.newMessageDialogBody = action.dialogMessageBody
+            this._state.dialogsPage.messages.push(newDialogMessage)
+            this._state.dialogsPage.newMessageDialogBody = ''
+            this._callSubscriber(this._state)
         }
     }
 }
 
-export type ActionType = AddPostACType
+export type ActionType = AddPostACType | UpdateNewMessageDialogBodyACType
 
 type AddPostACType = {
     type: 'ADD-POST',
     postText: string
 }
+type UpdateNewMessageDialogBodyACType = {
+    type: 'UPDATE-NEW-MESSAGE-BODY',
+    dialogMessageBody: string
+}
+
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+
 export const addPostAC = (newPostMessage: string): AddPostACType => {
     return {type: ADD_POST, postText: newPostMessage}
+}
+export const updateNewMessageDialogBodyAC = (newDialogBodyMessage: string): UpdateNewMessageDialogBodyACType => {
+    return {type: UPDATE_NEW_MESSAGE_BODY, dialogMessageBody: newDialogBodyMessage}
 }
 
 export default store;
 /*window.store = store;*/
-
-
-
-
 
 
 /*let state: StatePropsType = {
