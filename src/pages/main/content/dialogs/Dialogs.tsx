@@ -9,12 +9,11 @@ import {ActionsType, DialogNameType, MessagePropsType} from '../../../../redux/r
 type PropsType = {
     dialogNames: Array<DialogNameType>,
     messages: Array<MessagePropsType>,
-    dispatch: (action: ActionsType) => void
+    sendMessage: (newMessage: string) => void,
 }
 
 export const Dialogs = (props: PropsType) => {
-
-    let [newMessage, setNewMessage] = useState('')
+    let [newMessage, setNewMessage] = useState<string>('')
 
     const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setNewMessage(e.currentTarget.value)
@@ -22,7 +21,7 @@ export const Dialogs = (props: PropsType) => {
 
     const onSendMessageClick = () => {
         if (newMessage.trim() === '') return
-        props.dispatch(addMessageAC(newMessage))
+        props.sendMessage(newMessage)
         setNewMessage('')
     }
 
@@ -42,9 +41,7 @@ export const Dialogs = (props: PropsType) => {
                               placeholder={'Enter your message'}
                               value={newMessage}
                               onChange={onChangeTextareaHandler}
-                    >
-
-                    </textarea>
+                    >''</textarea>
                 </div>
 
                 <div>

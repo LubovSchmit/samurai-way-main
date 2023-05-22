@@ -44,13 +44,6 @@ export type StatePropsType = {
 }
 
 
-
-/*export type StoreType = {
-    postPage: PostsPageType,
-    dialogsPage: DialogsPageType,
-    profilePage: ProfilePageType
-}*/
-
 let reducers = combineReducers({
     postsPage: postsReducer,
     dialogsPage : dialogsReducer,

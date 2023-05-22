@@ -1,13 +1,11 @@
 import React from 'react';
 import style from './Content.module.scss';
 import {Profile} from './profile/Profile';
-import {Dialogs} from './dialogs/Dialogs';
 import {Route} from 'react-router-dom';
 import {Settings} from './settings/Settings';
-import {Posts} from './posts/Posts';
 import {ActionsType, StatePropsType} from '../../../redux/reduxStore/reduxStore';
 import {PostsContainer} from './posts/PostsContainer';
-
+import {DialogsContainer} from './dialogs/DialogsContainer';
 
 
 type PropsType = {
@@ -26,7 +24,7 @@ export const Content = (props: PropsType) => {
                                                               dispatch={props.dispatch}
 
             />}/>
-            <Route exact path={'/dialogs'} render={() => <Dialogs dialogNames={props.state.dialogsPage.dialogNames}
+            <Route exact path={'/dialogs'} render={() => <DialogsContainer dialogNames={props.state.dialogsPage.dialogNames}
                                                                   messages={props.state.dialogsPage.messages}
                                                                   dispatch={props.dispatch}/>}/>
             <Route exact path={'/settings'} render={() => <Settings/>}/>

@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import style from './Posts.module.scss';
 import {Post} from './post/Post';
 import {PostType} from '../../../../redux/reduxStore/reduxStore';
@@ -8,19 +8,20 @@ type PropsType = {
     posts: Array<PostType>
     postText: string
     addPost: (newPostMessage: string) => void
-    newPostMessage: string
-    setNewPostMessage: (newPostMessage: string) => void
+
 }
 
 
 export const Posts = (props: PropsType) => {
+    let [newPostMessage, setNewPostMessage] = useState<string>('')
 
     const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.setNewPostMessage(e.currentTarget.value)
+        setNewPostMessage(e.currentTarget.value)
     }
     const addPostHandler = () => {
-        if (props.newPostMessage.trim() === '') return
-        props.addPost(props.newPostMessage)
+        if (newPostMessage.trim() === '') return
+        props.addPost(newPostMessage)
+        setNewPostMessage('')
     }
 
     let postsElements = props.posts
@@ -35,7 +36,7 @@ export const Posts = (props: PropsType) => {
 
                 <textarea className={style.textarea}
                           placeholder={'Enter your post'}
-                          value={props.newPostMessage}
+                          value={newPostMessage}
                           onChange={onChangeTextareaHandler}>''</textarea>
 
                 <button className={style.button} onClick={addPostHandler}>
