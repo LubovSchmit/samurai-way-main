@@ -40,8 +40,9 @@ export type StatePropsType = {
     profilePage: ProfilePageType
     postsPage: PostsPageType
     dialogsPage: DialogsPageType
-
 }
+
+export type DispatchType = (action: ActionsType, anyArgument?: any)=> void
 
 
 let reducers = combineReducers({

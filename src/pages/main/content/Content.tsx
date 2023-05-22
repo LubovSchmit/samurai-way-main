@@ -19,15 +19,9 @@ export const Content = (props: PropsType) => {
     return (
         <div id="content" className={style.contentBlock}>
             <Route exact path={'/profile'} render={() => <Profile friends={props.state.profilePage.friends}/>}/>
-            <Route exact path={'/posts'} render={() => <PostsContainer posts={props.state.postsPage.posts}
-                                                              postText={props.state.postsPage.newPostText}
-                                                              dispatch={props.dispatch}
-
-            />}/>
-            <Route exact path={'/dialogs'} render={() => <DialogsContainer dialogNames={props.state.dialogsPage.dialogNames}
-                                                                  messages={props.state.dialogsPage.messages}
-                                                                  dispatch={props.dispatch}/>}/>
-            <Route exact path={'/settings'} render={() => <Settings/>}/>
+            <Route exact path={'/posts'} render={() => <PostsContainer />}/>
+            <Route exact path={'/dialogs'} render={() => <DialogsContainer />}/>
+            <Route exact path={'/settings'} render={() => <Settings />}/>
         </div>
     )
 }
