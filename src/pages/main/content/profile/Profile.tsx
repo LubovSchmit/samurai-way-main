@@ -3,7 +3,8 @@ import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
 import {Friends} from './friends/Friends';
-import {FriendType} from '../../../../redux/state';
+import {FriendType} from '../../../../redux/reduxStore/reduxStore';
+
 
 
 type PropsType = {

@@ -4,12 +4,13 @@ import {Header} from './pages/header/Header';
 import {Main} from './pages/main/Main';
 import {Footer} from './pages/footer/Footer';
 import {Route} from 'react-router-dom';
-import {ActionType, StatePropsType} from './redux/state';
+import {ActionsType, StatePropsType} from './redux/reduxStore/reduxStore';
+
 
 
 type PropsType = {
     state: StatePropsType,
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionsType) => void
 
 }
 

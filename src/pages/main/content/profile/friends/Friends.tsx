@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Friends.module.scss';
-import {FriendType} from '../../../../../redux/state';
 import {Friend} from './friend/Friend';
+import {FriendType} from '../../../../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {

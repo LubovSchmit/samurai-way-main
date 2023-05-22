@@ -1,34 +1,32 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import style from './Posts.module.scss';
-import {ActionType, addPostAC, PostType} from '../../../../redux/state';
 import {Post} from './post/Post';
+import {PostType} from '../../../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {
     posts: Array<PostType>
     postText: string
-    dispatch: (action: ActionType) => void
-
+    addPost: (newPostMessage: string) => void
+    newPostMessage: string
+    setNewPostMessage: (newPostMessage: string) => void
 }
 
 
 export const Posts = (props: PropsType) => {
 
-    let [newPostMessage, setNewPostMessage] = useState('')
-
-    let postsElements = props.posts.map(p => <Post key={p.id} id={p.id} postText={p.postText}
-                                                   likesCount={p.likesCount}/>)
-
     const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setNewPostMessage(e.currentTarget.value)
+        props.setNewPostMessage(e.currentTarget.value)
+    }
+    const addPostHandler = () => {
+        if (props.newPostMessage.trim() === '') return
+        props.addPost(props.newPostMessage)
     }
 
-    const addPostMessageHandler = () => {
-        if (newPostMessage.trim() === '') return
-        props.dispatch(addPostAC(newPostMessage))
-        setNewPostMessage('')
-    }
-
+    let postsElements = props.posts
+        .map(p => <Post key={p.id} id={p.id}
+                        postText={p.postText}
+                        likesCount={p.likesCount}/>)
 
     return (
         <div className={style.postsContainer}>
@@ -37,11 +35,11 @@ export const Posts = (props: PropsType) => {
 
                 <textarea className={style.textarea}
                           placeholder={'Enter your post'}
-                          value={newPostMessage}
+                          value={props.newPostMessage}
                           onChange={onChangeTextareaHandler}>''</textarea>
 
-                <button className={style.button} onClick={addPostMessageHandler}
-                >Add post
+                <button className={style.button} onClick={addPostHandler}>
+                    Add post
                 </button>
 
             </div>

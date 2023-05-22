@@ -3,12 +3,13 @@ import style from './Main.module.scss';
 import {Nav} from './nav/Nav';
 import {Content} from './content/Content';
 import {ButtonNav} from './nav/buttonNav/ButtonNav';
-import {ActionType, StatePropsType} from '../../redux/state';
+import {ActionsType, StatePropsType} from '../../redux/reduxStore/reduxStore';
+
 
 
 type PropsType = {
     state: StatePropsType,
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionsType) => void
 }
 
 export const Main = (props: PropsType) => {

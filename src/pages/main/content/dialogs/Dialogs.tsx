@@ -2,13 +2,14 @@ import React, {ChangeEvent, useState} from 'react';
 import style from './Dialogs.module.scss';
 import {DialogsItems} from './dialogs-items/DialogsItems';
 import {Messages} from './messages/Messages';
-import {ActionType, addMessageAC, DialogNameType, MessagePropsType} from '../../../../redux/state';
+import {addMessageAC} from '../../../../redux/reducers/dialogsReducer/dialogsReducer';
+import {ActionsType, DialogNameType, MessagePropsType} from '../../../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {
     dialogNames: Array<DialogNameType>,
     messages: Array<MessagePropsType>,
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionsType) => void
 }
 
 export const Dialogs = (props: PropsType) => {

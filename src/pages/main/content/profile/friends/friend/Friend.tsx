@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Friend.module.scss';
-import {FriendType} from '../../../../../../redux/state';
+
 
 
 
