@@ -9,8 +9,8 @@ import {ActionsType, StatePropsType} from './redux/reduxStore/reduxStore';
 
 
 type PropsType = {
-    state: StatePropsType,
-    dispatch: (action: ActionsType) => void
+    /*state: StatePropsType,
+    dispatch: (action: ActionsType) => void*/
 
 }
 
@@ -20,9 +20,7 @@ function App(props: PropsType) {
         <div className={style.appBlock}>
 
             <Header/>
-            <Route path={'/'} render={() => <Main
-                state={props.state}
-                dispatch={props.dispatch} />}/>
+            <Route path={'/'} render={() => <Main />}/>
             <Footer/>
 
         </div>

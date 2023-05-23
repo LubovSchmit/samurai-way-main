@@ -1,6 +1,6 @@
 import React from 'react';
 import {addPostAC} from '../../../../redux/reducers/postsReducer/postsReducer';
-import {ActionsType, DispatchType, PostType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
+import {DispatchType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
 import {Posts} from './Posts';
 import {connect} from 'react-redux';
 

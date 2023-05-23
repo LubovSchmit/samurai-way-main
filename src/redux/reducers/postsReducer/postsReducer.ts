@@ -2,7 +2,6 @@ import {v1} from 'uuid';
 import {ActionsType, PostsPageType, PostType} from '../../reduxStore/reduxStore';
 
 
-
 export type AddPostACType = {
     type: 'ADD-POST',
     postText: string
@@ -34,7 +33,6 @@ let initialState = {
 }
 
 
-
 export const addPostAC = (newPostMessage: string): AddPostACType => {
     return {type: 'ADD-POST', postText: newPostMessage}
 }
@@ -48,10 +46,10 @@ export const postsReducer = (state: PostsPageType = initialState, action: Action
                 postText: action.postText,
                 likesCount: 0
             }
-            state.newPostText = action.postText
-            state.posts.push(newPost)
+          /*  state.newPostText = action.postText*/
+
             state.newPostText = ''
-            return state
+            return {...state, posts: [newPost, ...state.posts]}
         }
 
 

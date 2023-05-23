@@ -8,8 +8,8 @@ import {ActionsType, StatePropsType} from '../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {
-    state: StatePropsType,
-    dispatch: (action: ActionsType) => void
+    /*state: StatePropsType,
+    dispatch: (action: ActionsType) => void*/
 }
 
 export const Main = (props: PropsType) => {
@@ -24,10 +24,7 @@ export const Main = (props: PropsType) => {
                 </div>
 
                 <div className={style.content}>
-                    <Content state={props.state}
-                             dispatch={props.dispatch}
-
-                    />
+                    <Content />
                 </div>
 
             </div>

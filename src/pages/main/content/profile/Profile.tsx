@@ -2,13 +2,11 @@ import React from 'react';
 import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
-import {Friends} from './friends/Friends';
-import {FriendType} from '../../../../redux/reduxStore/reduxStore';
-
+import {FriendsProfileContainer} from './friends/FriendsProfileContainer';
 
 
 type PropsType = {
-    friends: Array<FriendType>
+    /*friends: Array<FriendType>*/
 }
 
 export const Profile = (props: PropsType) => {
@@ -27,7 +25,7 @@ export const Profile = (props: PropsType) => {
 
             <div>
                 <div className={style.friendsContainer}>
-                    <Friends friends={props.friends}/>
+                    <FriendsProfileContainer />
                 </div>
             </div>
 

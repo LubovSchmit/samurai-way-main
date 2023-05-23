@@ -1,9 +1,9 @@
 import {combineReducers, createStore} from 'redux';
 import {AddPostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {AddNewMessageACType, dialogsReducer} from '../reducers/dialogsReducer/dialogsReducer';
-import {profileReducer} from '../reducers/profileReducer/profileReducer';
+import {DeleteFriendACType, profileReducer} from '../reducers/profileReducer/profileReducer';
 
-export type ActionsType = AddPostACType | AddNewMessageACType
+export type ActionsType = AddPostACType | AddNewMessageACType | DeleteFriendACType
 
 export type FriendType = {
     id: string
