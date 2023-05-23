@@ -48,8 +48,8 @@ export const postsReducer = (state: PostsPageType = initialState, action: Action
             }
           /*  state.newPostText = action.postText*/
 
-            state.newPostText = ''
-            return {...state, posts: [newPost, ...state.posts]}
+
+            return {...state, newPostText: '', posts: [newPost, ...state.posts]}
         }
 
 
