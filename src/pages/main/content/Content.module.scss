@@ -3,5 +3,6 @@
 .contentBlock {
   background-color: darkgoldenrod;
   @include flex(column, space-around, center, wrap);
-
+  width: 100%;
+  height: 100%;
 }

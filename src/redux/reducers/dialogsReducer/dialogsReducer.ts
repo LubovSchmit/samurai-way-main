@@ -1,5 +1,5 @@
 import {v1} from 'uuid';
-import {ActionsType, DialogsPageType, MessagePropsType} from '../../reduxStore/reduxStore';
+import {ActionsType, DialogsPageType, MessageType} from '../../reduxStore/reduxStore';
 
 
 export type AddNewMessageACType = {
@@ -36,7 +36,7 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
     switch (action.type) {
 
         case 'ADD-NEW-MESSAGE': {
-            let newDialogMessage: MessagePropsType = {
+            let newDialogMessage: MessageType = {
                 id: v1(),
                 message: action.dialogMessage
             }

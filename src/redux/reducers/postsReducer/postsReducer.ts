@@ -7,7 +7,7 @@ export type AddPostACType = {
     postText: string
 }
 
-let initialState = {
+let initialState: PostsPageType = {
     newPostText: '',
     posts: [
         {
@@ -31,7 +31,6 @@ let initialState = {
     ],
 
 }
-
 
 export const addPostAC = (newPostMessage: string): AddPostACType => {
     return {type: 'ADD-POST', postText: newPostMessage}

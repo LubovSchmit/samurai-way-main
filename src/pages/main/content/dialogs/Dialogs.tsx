@@ -2,12 +2,12 @@ import React, {ChangeEvent, useState} from 'react';
 import style from './Dialogs.module.scss';
 import {DialogsItems} from './dialogs-items/DialogsItems';
 import {Messages} from './messages/Messages';
-import {DialogNameType, MessagePropsType} from '../../../../redux/reduxStore/reduxStore';
+import {DialogNameType, MessageType} from '../../../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {
     dialogNames: Array<DialogNameType>,
-    messages: Array<MessagePropsType>,
+    messages: Array<MessageType>,
     sendMessage: (newMessage: string) => void,
 }
 

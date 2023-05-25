@@ -2,6 +2,8 @@
 
 .appBlock {
   @include flex(column, center, space-between, wrap);
+  width: 100%;
+  height: 100%;
 }
 
 

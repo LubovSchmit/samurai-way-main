@@ -3,22 +3,22 @@
 .mainBlock {
   background-color: aquamarine;
   border: 2px solid green;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 
   .mainContainer {
-    background-color: orange;
+    background-color: sienna;
     @include flex(row, space-around, center, wrap);
+    align-items: flex-start;
     overflow-wrap: break-word;
     height: 100%;
+    width: 100%;
 
     .nav {
       flex: 1;
       @include flex(row, center, flex-start, wrap);
-
-
       border: 1px solid yellow;
-      background-color: dimgrey;
-      width: 100px;
+      width: 100%;
       height: 100%;
     }
 
@@ -26,7 +26,7 @@
       flex: 10;
       border: 1px solid blue;
       background-color: olivedrab;
-      width: 100px;
+      width: 100%;
       height: 100%;
     }
   }

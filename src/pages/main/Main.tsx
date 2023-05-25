@@ -3,8 +3,6 @@ import style from './Main.module.scss';
 import {Nav} from './nav/Nav';
 import {Content} from './content/Content';
 import {ButtonNav} from './nav/buttonNav/ButtonNav';
-import {ActionsType, StatePropsType} from '../../redux/reduxStore/reduxStore';
-
 
 
 type PropsType = {

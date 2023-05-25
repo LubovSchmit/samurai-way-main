@@ -5,6 +5,8 @@ import {Route} from 'react-router-dom';
 import {Settings} from './settings/Settings';
 import {PostsContainer} from './posts/PostsContainer';
 import {DialogsContainer} from './dialogs/DialogsContainer';
+import {UsersContainer} from './users/UsersContainer';
+
 
 
 type PropsType = {
@@ -19,8 +21,9 @@ export const Content = (props: PropsType) => {
         <div id="content" className={style.contentBlock}>
             <Route exact path={'/profile'} render={() => <Profile/>}/>
             <Route exact path={'/posts'} render={() => <PostsContainer />}/>
-            <Route exact path={'/dialogs'} render={() => <DialogsContainer />}/>
+            <Route exact path={'/dialogs'} render={() => <DialogsContainer  />}/>
             <Route exact path={'/settings'} render={() => <Settings />}/>
+            <Route exact path={'/users'} render={() => <UsersContainer  />}/>
         </div>
     )
 }
