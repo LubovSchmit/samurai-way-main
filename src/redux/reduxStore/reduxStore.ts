@@ -17,20 +17,18 @@ export type ActionsType =
     UnfollowUserACType |
     SetUsersACType
 
-export type UserLocationType = {
-    country: string
-    city: string
-}
 export type FriendType = {
     id: string
     friendName: string
 }
 export type UserType = {
-    userId: string
-    photoURL: string
-    fullName: string
+    id: string
+    photos: {
+        small: string
+        large: string
+    }
+    name: string
     status: string
-    location: UserLocationType
     followed: boolean
 }
 export type DialogNameType = {

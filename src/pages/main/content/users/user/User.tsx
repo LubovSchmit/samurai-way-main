@@ -1,15 +1,16 @@
 import React from 'react';
 import style from './User.module.scss';
-import {UserLocationType} from '../../../../../redux/reduxStore/reduxStore';
+import userPhoto from './../../../../../commun/assets/images/userPPhoto.jpg'
+
+
 
 
 type PropsType = {
-    userId: string
-    fullName: string
-    photoURL: string
+    id: string
+    name: string
+    photoSmall: string
     status: string
-    location: UserLocationType
-    followed: boolean
+   followed: boolean
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
 }
@@ -17,20 +18,21 @@ type PropsType = {
 export const User = (props: PropsType) => {
 
     const onClickFollowUserButton = () => {
-        props.followUser(props.userId)
+        props.followUser(props.id)
     }
     const onClickUnfollowUserButton = () => {
-        props.unfollowUser(props.userId)
+        props.unfollowUser(props.id)
     }
 
     return (
+
         <div className={style.userContainer}>
 
             <div className={style.userInformationContainer}>
-                <div className={style.userFullName}>{props.fullName}</div>
+                <div className={style.userFullName}>{props.name}</div>
 
                 <div className={style.userPhotoURL}>
-                    <img src={props.photoURL} className={style.photoURL} alt="user's avatar"/>
+                    <img src={props.photoSmall !== null ? props.photoSmall : userPhoto} className={style.photos} alt="user's avatar"/>
                 </div>
                 <div className={style.userStatus}>{props.status}</div>
             </div>
