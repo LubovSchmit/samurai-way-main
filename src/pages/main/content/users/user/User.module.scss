@@ -20,15 +20,17 @@
       font-size: large;
       border: 1px solid blue;
     }
-    .userPhotoURL {
+
+    .userPhoto {
       flex: 2;
       margin: 5px;
-      .photoURL {
 
-        width: 20%;
-        height: 20%;
+      .photo {
+        width: 30%;
+        height: 30%;
       }
     }
+
     .userStatus {
       flex: 9;
       width: 60%;
@@ -37,7 +39,6 @@
     }
 
   }
-
 
 
   .userFollowAndButtonContainer {

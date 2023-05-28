@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './User.module.scss';
-import userPhoto from './../../../../../commun/assets/images/userPPhoto.jpg'
+import userPhoto from './../../../../../assets/images/userPhoto.jpg'
 
 
 
@@ -31,8 +31,8 @@ export const User = (props: PropsType) => {
             <div className={style.userInformationContainer}>
                 <div className={style.userFullName}>{props.name}</div>
 
-                <div className={style.userPhotoURL}>
-                    <img src={props.photoSmall !== null ? props.photoSmall : userPhoto} className={style.photos} alt="user's avatar"/>
+                <div className={style.userPhoto}>
+                    <img src={props.photoSmall !== null ? props.photoSmall : userPhoto} className={style.photo} alt="user's avatar"/>
                 </div>
                 <div className={style.userStatus}>{props.status}</div>
             </div>
