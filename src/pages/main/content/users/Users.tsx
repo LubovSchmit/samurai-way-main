@@ -13,30 +13,31 @@ type PropsType = {
 }
 
 
-export const Users = (props: PropsType) => {
+export class Users extends React.Component<PropsType, Array<UserType>> {
 
-    if (props.users.length === 0) {
 
+    componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
             debugger
-            props.setUsers(response.data.items)
+            this.props.setUsers(response.data.items)
         })
-
-
     }
 
-    return (
-        <div className={style.usersContainer}>
-            {props.users.map(u =>
-                <User key={u.id}
-                      id={u.id}
-                      photoSmall={u.photos.small}
-                      name={u.name}
-                      status={u.status}
-                      followed={u.followed}
-                      followUser={props.followUser}
-                      unfollowUser={props.unfollowUser}/>
-            )}
-        </div>
-    )
+    render() {
+        return (
+            <div className={style.usersContainer}>
+
+                {this.props.users.map(u =>
+                    <User key={u.id}
+                          id={u.id}
+                          photoSmall={u.photos.small}
+                          name={u.name}
+                          status={u.status}
+                          followed={u.followed}
+                          followUser={this.props.followUser}
+                          unfollowUser={this.props.unfollowUser}/>
+                )}
+            </div>
+        )
+    }
 }
