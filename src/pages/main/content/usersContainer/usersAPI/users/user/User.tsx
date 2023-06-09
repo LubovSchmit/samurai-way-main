@@ -1,8 +1,6 @@
 import React from 'react';
 import style from './User.module.scss';
-import userPhoto from './../../../../../assets/images/userPhoto.jpg'
-
-
+import userPhoto from '../../../../../../../assets/images/userPhoto.jpg'
 
 
 type PropsType = {

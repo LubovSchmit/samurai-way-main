@@ -4,6 +4,8 @@ import {AddNewMessageACType, dialogsReducer} from '../reducers/dialogsReducer/di
 import {DeleteFriendACType, profileReducer} from '../reducers/profileReducer/profileReducer';
 import {
     FollowUserACType,
+    SetCurrentPageACType,
+    SetTotalUsersCountACType,
     SetUsersACType,
     UnfollowUserACType,
     usersReducer
@@ -15,7 +17,9 @@ export type ActionsType =
     DeleteFriendACType |
     FollowUserACType |
     UnfollowUserACType |
-    SetUsersACType
+    SetUsersACType |
+    SetCurrentPageACType |
+    SetTotalUsersCountACType
 
 export type FriendType = {
     id: string
@@ -58,7 +62,10 @@ export type DialogsPageType = {
     newMessage: string
 }
 export type UsersPageType = {
-    users: Array<UserType>
+    users: Array<UserType>,
+    pageSize: number,
+    totalCount: number,
+    currentPage: number,
 }
 
 export type StatePropsType = {

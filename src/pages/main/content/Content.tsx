@@ -5,7 +5,9 @@ import {Route} from 'react-router-dom';
 import {Settings} from './settings/Settings';
 import {PostsContainer} from './posts/PostsContainer';
 import {DialogsContainer} from './dialogs/DialogsContainer';
-import {UsersContainer} from './users/UsersContainer';
+import {UsersContainer} from './usersContainer/UsersContainer';
+
+
 
 
 
