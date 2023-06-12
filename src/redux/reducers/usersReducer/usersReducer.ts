@@ -24,11 +24,17 @@ export type SetCurrentPageACType = {
     currentPage: number
 }
 
+export type ToggleIsFetchingACType = {
+    type: 'TOGGLE-IS-FETCHING',
+    isFetching: boolean
+}
+
 let initialState: UsersPageType = {
     users: [],
     pageSize: 100,
     totalCount: 0,
     currentPage: 1,
+    isFetching: false,
 }
 
 export const followUserAC = (id: string): FollowUserACType => {
@@ -45,6 +51,10 @@ export const setTotalUsersCountAC = (totalCount: number): SetTotalUsersCountACTy
 }
 export const setCurrentPageAC = (currentPage: number): SetCurrentPageACType => {
     return {type: 'SET-CURRENT-PAGE', currentPage}
+}
+
+export const toggleIsFetchingAC = (isFetching: boolean): ToggleIsFetchingACType => {
+    return {type: 'TOGGLE-IS-FETCHING', isFetching}
 }
 
 
@@ -89,6 +99,10 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
 
         case 'SET-TOTAL-USERS-COUNT': {
             return {...state, totalCount: action.totalCount}
+        }
+
+        case 'TOGGLE-IS-FETCHING': {
+            return {...state, isFetching: action.isFetching}
         }
 
         default:

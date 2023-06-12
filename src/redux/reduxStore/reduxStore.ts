@@ -6,7 +6,7 @@ import {
     FollowUserACType,
     SetCurrentPageACType,
     SetTotalUsersCountACType,
-    SetUsersACType,
+    SetUsersACType, ToggleIsFetchingACType,
     UnfollowUserACType,
     usersReducer
 } from '../reducers/usersReducer/usersReducer';
@@ -19,7 +19,8 @@ export type ActionsType =
     UnfollowUserACType |
     SetUsersACType |
     SetCurrentPageACType |
-    SetTotalUsersCountACType
+    SetTotalUsersCountACType |
+    ToggleIsFetchingACType
 
 export type FriendType = {
     id: string
@@ -66,6 +67,7 @@ export type UsersPageType = {
     pageSize: number,
     totalCount: number,
     currentPage: number,
+    isFetching: boolean,
 }
 
 export type StatePropsType = {
