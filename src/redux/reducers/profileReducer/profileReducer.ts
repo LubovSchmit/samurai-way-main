@@ -24,7 +24,7 @@ let initialState = {
     ]
 }
 
-export const deleteFriendAC = (id: string): DeleteFriendACType => {
+export const deleteFriend = (id: string): DeleteFriendACType => {
     return {
         type: 'DELETE-FRIEND',
         id: id
