@@ -13,17 +13,14 @@ export type SetUsersACType = {
     type: 'SET-USERS'
     users: Array<UserType>
 }
-
 export type SetTotalUsersCountACType = {
     type: 'SET-TOTAL-USERS-COUNT',
     totalCount: number
 }
-
 export type SetCurrentPageACType = {
     type: 'SET-CURRENT-PAGE',
     currentPage: number
 }
-
 export type ToggleIsFetchingACType = {
     type: 'TOGGLE-IS-FETCHING',
     isFetching: boolean
@@ -37,23 +34,23 @@ let initialState: UsersPageType = {
     isFetching: false,
 }
 
-export const followUserAC = (id: string): FollowUserACType => {
+export const followUser = (id: string): FollowUserACType => {
     return {type: 'FOLLOW-USER', id}
 }
-export const unfollowUserAC = (id: string): UnfollowUserACType => {
+export const unfollowUser = (id: string): UnfollowUserACType => {
     return {type: 'UNFOLLOW-USER', id}
 }
-export const setUsersAC = (users: Array<UserType>): SetUsersACType => {
+export const setUsers = (users: Array<UserType>): SetUsersACType => {
     return {type: 'SET-USERS', users}
 }
-export const setTotalUsersCountAC = (totalCount: number): SetTotalUsersCountACType => {
+export const setTotalUsersCount = (totalCount: number): SetTotalUsersCountACType => {
     return {type: 'SET-TOTAL-USERS-COUNT', totalCount}
 }
-export const setCurrentPageAC = (currentPage: number): SetCurrentPageACType => {
+export const setCurrentPage = (currentPage: number): SetCurrentPageACType => {
     return {type: 'SET-CURRENT-PAGE', currentPage}
 }
 
-export const toggleIsFetchingAC = (isFetching: boolean): ToggleIsFetchingACType => {
+export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingACType => {
     return {type: 'TOGGLE-IS-FETCHING', isFetching}
 }
 

@@ -1,33 +1,38 @@
-import {DispatchType, StatePropsType, UserType} from '../../../../redux/reduxStore/reduxStore';
+import {StatePropsType, UserType} from '../../../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
 import {
-    followUserAC,
-    setCurrentPageAC, setTotalUsersCountAC,
-    setUsersAC, toggleIsFetchingAC,
-    unfollowUserAC
+    followUser,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    toggleIsFetching,
+    unfollowUser
 } from '../../../../redux/reducers/usersReducer/usersReducer';
 import React from 'react';
 import axios from 'axios';
 import {Users} from './usersAPI/users/Users';
-import preloader from './../../../../assets/images/preloader.svg';
-import style from './UsersContainer.module.scss'
 import {Preloader} from '../../../../commun/preloader/Preloader';
 
 
-/*type PropsType = {
+type PropsType = {
     users: Array<UserType>
-    pageSize: number,
-    totalCount: number,
+    pageSize: number
+    totalCount: number
     currentPage: number
+    isFetching: boolean
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
 
     setUsers: (users: Array<UserType>) => void
     setTotalUsersCount: (totalCount: number) => void
-    setCurrentPage: (currentPage: number) => void,
+    setCurrentPage: (currentPage: number) => void
+    toggleIsFetching: (isFetching: boolean)=> void
 
-}*/
-export class UsersAPI extends React.Component<UsersProps, Array<UserType>> {
+}
+
+/*export type UsersProps = ReturnType<typeof mapStateToProps> */
+
+export class UsersAPI extends React.Component<PropsType, Array<UserType>> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
@@ -65,6 +70,7 @@ export class UsersAPI extends React.Component<UsersProps, Array<UserType>> {
 }
 
 
+
 const mapStateToProps = (state: StatePropsType) => {
     return {
         users: state.usersPage.users,
@@ -74,7 +80,7 @@ const mapStateToProps = (state: StatePropsType) => {
         isFetching: state.usersPage.isFetching,
     }
 }
-const mapDispatchToProps = (dispatch: DispatchType) => {
+/*const mapDispatchToProps = (dispatch: DispatchType) => {
     return {
         setUsers: (users: Array<UserType>) => dispatch(setUsersAC(users)),
         setTotalUsersCount: (totalCount: number) => dispatch(setTotalUsersCountAC(totalCount)),
@@ -83,10 +89,17 @@ const mapDispatchToProps = (dispatch: DispatchType) => {
         unfollowUser: (userId: string) => dispatch(unfollowUserAC(userId)),
         toggleIsFetching: (isFetching: boolean) => dispatch(toggleIsFetchingAC(isFetching))
     }
-}
+}*/
 
-export type UsersProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+export const UsersContainer = connect(mapStateToProps,
+    {
+        setUsers,
+        setTotalUsersCount,
+        setCurrentPage,
+        followUser,
+        unfollowUser,
+        toggleIsFetching,
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPI)
+    })(UsersAPI)
 
 
