@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './User.module.scss';
 import userPhoto from '../../../../../../../assets/images/userPhoto.jpg'
-
+import {NavLink} from 'react-router-dom';
 
 type PropsType = {
     id: string
     name: string
     photoSmall: string
     status: string
-   followed: boolean
+    followed: boolean
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
 }
@@ -29,13 +29,18 @@ export const User = (props: PropsType) => {
             <div className={style.userInformationContainer}>
                 <div className={style.userFullName}>{props.name}</div>
 
-                <div className={style.userPhoto}>
-                    <img src={props.photoSmall !== null ? props.photoSmall : userPhoto} className={style.photo} alt="user's avatar"/>
-                </div>
+                <NavLink to={'/profile/' + props.id}>
+
+                    <div className={style.userPhoto}>
+                        <img src={props.photoSmall !== null ? props.photoSmall : userPhoto} className={style.photo}
+                             alt="user's avatar"/>
+                    </div>
+
+                </NavLink>
+
+
                 <div className={style.userStatus}>{props.status}</div>
             </div>
-
-
 
 
             <div className={style.userFollowAndButtonContainer}>
