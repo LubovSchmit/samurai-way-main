@@ -2,14 +2,14 @@ import React from 'react';
 import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
-import {FriendsProfileContainer} from './friends/FriendsProfileContainer';
+
 
 
 type PropsType = {
-    /*friends: Array<FriendType>*/
+
 }
 
-export const Profile = (props: PropsType) => {
+export const Profile = (props: any) => {
     return (
         <div className={style.profileContainer}>
 
@@ -23,11 +23,7 @@ export const Profile = (props: PropsType) => {
                 </div>
             </div>
 
-            <div>
-                <div className={style.friendsContainer}>
-                    <FriendsProfileContainer />
-                </div>
-            </div>
+
 
         </div>
     )

@@ -27,7 +27,6 @@ type PropsType = {
     setTotalUsersCount: (totalCount: number) => void
     setCurrentPage: (currentPage: number) => void
     toggleIsFetching: (isFetching: boolean)=> void
-
 }
 
 /*export type UsersProps = ReturnType<typeof mapStateToProps> */
@@ -80,16 +79,7 @@ const mapStateToProps = (state: StatePropsType) => {
         isFetching: state.usersPage.isFetching,
     }
 }
-/*const mapDispatchToProps = (dispatch: DispatchType) => {
-    return {
-        setUsers: (users: Array<UserType>) => dispatch(setUsersAC(users)),
-        setTotalUsersCount: (totalCount: number) => dispatch(setTotalUsersCountAC(totalCount)),
-        setCurrentPage: (currentPage: number) => dispatch(setCurrentPageAC(currentPage)),
-        followUser: (userId: string) => dispatch(followUserAC(userId)),
-        unfollowUser: (userId: string) => dispatch(unfollowUserAC(userId)),
-        toggleIsFetching: (isFetching: boolean) => dispatch(toggleIsFetchingAC(isFetching))
-    }
-}*/
+
 
 export const UsersContainer = connect(mapStateToProps,
     {

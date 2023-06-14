@@ -1,12 +1,13 @@
 import {combineReducers, createStore} from 'redux';
 import {AddPostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {AddNewMessageACType, dialogsReducer} from '../reducers/dialogsReducer/dialogsReducer';
-import {DeleteFriendACType, profileReducer} from '../reducers/profileReducer/profileReducer';
+import {profileReducer, SetUserProfileACType} from '../reducers/profileReducer/profileReducer';
 import {
     FollowUserACType,
     SetCurrentPageACType,
     SetTotalUsersCountACType,
-    SetUsersACType, ToggleIsFetchingACType,
+    SetUsersACType,
+    ToggleIsFetchingACType,
     UnfollowUserACType,
     usersReducer
 } from '../reducers/usersReducer/usersReducer';
@@ -14,18 +15,15 @@ import {
 export type ActionsType =
     AddPostACType |
     AddNewMessageACType |
-    DeleteFriendACType |
     FollowUserACType |
     UnfollowUserACType |
     SetUsersACType |
     SetCurrentPageACType |
     SetTotalUsersCountACType |
-    ToggleIsFetchingACType
+    ToggleIsFetchingACType |
+    SetUserProfileACType
 
-export type FriendType = {
-    id: string
-    friendName: string
-}
+
 export type UserType = {
     id: string
     photos: {
@@ -49,10 +47,31 @@ export type PostType = {
     postText: string
     likesCount: number
 }
+export type ProfileType = {
+    aboutMe: string,
+    contacts: {
+        facebook: string | null,
+        website: string | null,
+        vk: string | null,
+        twitter: string | null,
+        instagram: string | null,
+        youtube: string | null,
+        github: string | null,
+        mainLink: string | null,
+    },
+    lookingForAJob: boolean,
+    LookingForAJobDescription: string | null,
+    fullName: string,
+    userId: string,
+    photos: {
+        small: string
+        large: string
+    }
+}
 
 export type ProfilePageType = {
-    friends: Array<FriendType>
-}
+    profile: ProfileType | null,
+   }
 export type PostsPageType = {
     newPostText: string
     posts: Array<PostType>

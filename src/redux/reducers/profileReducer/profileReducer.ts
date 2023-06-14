@@ -1,43 +1,30 @@
-import {v1} from 'uuid';
-import {ActionsType, ProfilePageType} from '../../reduxStore/reduxStore';
+import {ActionsType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
 
-export type DeleteFriendACType = {
-    type: 'DELETE-FRIEND',
-    id: string
+
+export type SetUserProfileACType = {
+    type: 'SET-USER-PROFILE',
+    profile: ProfileType | null
 }
 
 
 let initialState = {
-    friends: [
-        {
-            id: v1(),
-            friendName: 'Nataliya'
-        },
-        {
-            id: v1(),
-            friendName: 'Veronika'
-        },
-        {
-            id: v1(),
-            friendName: 'Max'
-        }
-    ]
+    profile: null,
 }
 
-export const deleteFriend = (id: string): DeleteFriendACType => {
+
+export const setUserProfile = (profile: ProfileType | null): SetUserProfileACType => {
     return {
-        type: 'DELETE-FRIEND',
-        id: id
+        type: 'SET-USER-PROFILE',
+        profile
     }
 }
 
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType): ProfilePageType => {
     switch (action.type) {
-        case 'DELETE-FRIEND': {
-            return {...state, friends: state.friends.filter(f => f.id !== action.id)}
+        case 'SET-USER-PROFILE': {
+            return {...state, profile: action.profile}
         }
-
         default:
             return state
     }
