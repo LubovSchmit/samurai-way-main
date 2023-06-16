@@ -1,5 +1,32 @@
 @import '../../../../../../commun/styles/sass/mixins';
 
 .personalDataContainer {
+
+
   @include flex(column, space-around, center, wrap);
+
+  .headline {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .name {
+    margin: 3px;
+
+    font-weight: initial;
+  }
+
+  .aboutMe {
+    margin: 3px;
+
+    font-weight: initial;
+  }
+
+  .contacts {
+    margin: 3px;
+
+    @include flex(column, space-around, flex-start, wrap);
+    font-weight: initial;
+
+  }
 }

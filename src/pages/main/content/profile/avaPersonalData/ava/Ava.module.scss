@@ -1,6 +1,13 @@
+@import '../../../../../../commun/styles/sass/mixins';
+
+
+
 .avaContainer {
+  @include flex(column, space-around, center, wrap);
   background-color: red;
-  background-image: url('./../../../../../../assets/images/ava.jpg');
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+
+  .photo {
+    width: 100%;
+  }
 }

@@ -1,6 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import style from './Post.module.scss';
 import {Ava} from '../../profile/avaPersonalData/ava/Ava';
+import {ProfileType} from '../../../../../redux/reduxStore/reduxStore';
 
 
 
@@ -8,6 +9,7 @@ type PropsType = {
     id: string
     postText: string
     likesCount: number
+    photo: string
 }
 
 export const Post = (props: PropsType) => {
@@ -29,7 +31,7 @@ export const Post = (props: PropsType) => {
         <div className={style.postContainer}>
 
             <div className={style.avaPost}>
-                <Ava/>
+                <Ava id={props.id} photo={props.photo}/>
             </div>
 
             <div className={style.text} >

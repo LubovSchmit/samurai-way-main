@@ -32,7 +32,7 @@ let initialState: PostsPageType = {
 
 }
 
-export const addPostAC = (newPostMessage: string): AddPostACType => {
+export const addPost = (newPostMessage: string): AddPostACType => {
     return {type: 'ADD-POST', postText: newPostMessage}
 }
 

@@ -64,13 +64,13 @@ export type ProfileType = {
     fullName: string,
     userId: string,
     photos: {
-        small: string
+        small: string,
         large: string
     }
 }
 
 export type ProfilePageType = {
-    profile: ProfileType | null,
+    profile: ProfileType ,
    }
 export type PostsPageType = {
     newPostText: string

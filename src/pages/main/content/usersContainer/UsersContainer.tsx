@@ -29,9 +29,8 @@ type PropsType = {
     toggleIsFetching: (isFetching: boolean)=> void
 }
 
-/*export type UsersProps = ReturnType<typeof mapStateToProps> */
 
-export class UsersAPI extends React.Component<PropsType, Array<UserType>> {
+export class UsersAPI extends React.Component<PropsType> {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)

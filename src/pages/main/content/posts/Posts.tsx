@@ -5,8 +5,11 @@ import {PostType} from '../../../../redux/reduxStore/reduxStore';
 
 
 type PropsType = {
+    id: string
     posts: Array<PostType>
     postText: string
+    photo: string
+
     addPost: (newPostMessage: string) => void
 
 }
@@ -27,7 +30,9 @@ export const Posts = (props: PropsType) => {
     let postsElements = props.posts
         .map(p => <Post key={p.id} id={p.id}
                         postText={p.postText}
-                        likesCount={p.likesCount}/>)
+                        likesCount={p.likesCount}
+                        photo={props.photo}
+        />)
 
     return (
         <div className={style.postsContainer}>
