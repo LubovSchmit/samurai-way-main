@@ -1,11 +1,9 @@
 import React from 'react';
 import style from './App.module.scss';
-import {Header} from './pages/header/Header';
 import {Main} from './pages/main/Main';
 import {Footer} from './pages/footer/Footer';
 import {Route} from 'react-router-dom';
-import {ActionsType, StatePropsType} from './redux/reduxStore/reduxStore';
-
+import {HeaderContainer} from './pages/header/HeaderContainer';
 
 
 type PropsType = {
@@ -19,7 +17,7 @@ function App(props: PropsType) {
     return (
         <div className={style.appBlock}>
 
-            <Header/>
+            <HeaderContainer/>
             <Route path={'/'} render={() => <Main />}/>
             <Footer/>
 

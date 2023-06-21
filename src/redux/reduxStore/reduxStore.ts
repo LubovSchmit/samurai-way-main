@@ -11,6 +11,7 @@ import {
     UnfollowUserACType,
     usersReducer
 } from '../reducers/usersReducer/usersReducer';
+import {authReducer, AuthUserACType} from '../reducers/aythReducer/authReducer';
 
 export type ActionsType =
     AddPostACType |
@@ -21,7 +22,8 @@ export type ActionsType =
     SetCurrentPageACType |
     SetTotalUsersCountACType |
     ToggleIsFetchingACType |
-    SetUserProfileACType
+    SetUserProfileACType |
+    AuthUserACType
 
 
 export type UserType = {
@@ -68,10 +70,18 @@ export type ProfileType = {
         large: string
     }
 }
+export type UserDataType = {
+    id: string | null
+    email: string | null
+    login: string | null
+    isAuth: boolean
+
+}
+
 
 export type ProfilePageType = {
-    profile: ProfileType ,
-   }
+    profile: ProfileType,
+}
 export type PostsPageType = {
     newPostText: string
     posts: Array<PostType>
@@ -88,12 +98,18 @@ export type UsersPageType = {
     currentPage: number,
     isFetching: boolean,
 }
+export type AuthType = {
+    data: UserDataType,
+    isFetching: boolean
+}
+
 
 export type StatePropsType = {
     profilePage: ProfilePageType
     postsPage: PostsPageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType
+    auth: AuthType
 }
 export type DispatchType = (action: ActionsType, anyArgument?: any) => void
 
@@ -102,7 +118,8 @@ let reducers = combineReducers({
     postsPage: postsReducer,
     dialogsPage: dialogsReducer,
     profilePage: profileReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth: authReducer,
 })
 
 export let store = createStore(reducers);

@@ -1,12 +1,12 @@
 import React from 'react';
 import {ProfileType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
-import axios from 'axios';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import {Profile} from './Profile';
 import {setUserProfile} from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
 import {toggleIsFetching} from '../../../../redux/reducers/usersReducer/usersReducer';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {authMe} from '../../../../api/api';
 
 
 type MapDispatchToPropsType = {
@@ -37,10 +37,10 @@ class ProfileAPI extends React.Component<PropsType> {
 
         this.props.toggleIsFetching(true)
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
+        authMe(userId)
+            .then(data => {
                 this.props.toggleIsFetching(false)
-                this.props.setUserProfile(response.data)
+                this.props.setUserProfile(data)
             })
     }
 
