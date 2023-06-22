@@ -45,7 +45,7 @@ export type MessageType = {
     message: string
 }
 export type PostType = {
-    id: string
+    userId: string
     postText: string
     likesCount: number
 }

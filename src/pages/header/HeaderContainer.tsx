@@ -3,7 +3,7 @@ import {StatePropsType, UserDataType} from '../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
 import {Header} from './Header';
 import {setAuthUserData} from '../../redux/reducers/aythReducer/authReducer';
-import {authMe} from '../../api/api';
+import {authAPI} from '../../api/api';
 
 
 type MapDispatchToPropsType = {
@@ -15,15 +15,15 @@ type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
 export class AuthAPI extends React.Component<PropsType> {
     componentDidMount() {
-       /* axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })*/
+        /* axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
+             withCredentials: true
+         })*/
 
-        authMe().then(data=> {
-                if (data.resultCode === 0) {
-                    this.props.setAuthUserData(data.data)
-                }
-            })
+        authAPI.authMe().then(data => {
+            if (data.resultCode === 0) {
+                this.props.setAuthUserData(data.data)
+            }
+        })
     }
 
 

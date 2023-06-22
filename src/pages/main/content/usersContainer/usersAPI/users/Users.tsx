@@ -40,7 +40,7 @@ export const Users = (props: PropsType) => {
 
         {props.users.map(u =>
             <User key={u.id}
-                  id={u.id}
+                  userId={u.id}
                   photoSmall={u.photos.small}
                   name={u.name}
                   status={u.status}

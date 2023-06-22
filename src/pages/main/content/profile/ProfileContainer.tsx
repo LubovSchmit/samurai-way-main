@@ -4,7 +4,7 @@ import {Profile} from './Profile';
 import {setUserProfile} from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {authMe, getProfile} from '../../../../api/api';
+import {profileAPI} from '../../../../api/api';
 
 
 type MapDispatchToPropsType = {
@@ -27,7 +27,7 @@ class ProfileAPI extends React.Component<PropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
 
-        getProfile(userId)
+        profileAPI.getProfile(userId)
             .then(data => {
                 this.props.setUserProfile(data)
             })

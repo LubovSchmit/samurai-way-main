@@ -11,7 +11,7 @@ import {
 } from '../../../../redux/reducers/usersReducer/usersReducer';
 import {Users} from './usersAPI/users/Users';
 import {Preloader} from '../../../../commun/preloader/Preloader';
-import {getUsers} from '../../../../api/api';
+import {usersAPI} from '../../../../api/api';
 
 
 type PropsType = {
@@ -35,7 +35,7 @@ export class UsersAPI extends React.Component<PropsType> {
     componentDidMount() {
         this.props.toggleIsFetching(true)
 
-        getUsers(this.props.currentPage, this.props.pageSize)
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(data => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(data.items);
@@ -47,7 +47,7 @@ export class UsersAPI extends React.Component<PropsType> {
         this.props.setCurrentPage(currentPage);
         this.props.toggleIsFetching(true)
 
-        getUsers(currentPage, this.props.pageSize)
+        usersAPI.getUsers(currentPage, this.props.pageSize)
             .then(data => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(data.items)
