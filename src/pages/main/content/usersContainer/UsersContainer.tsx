@@ -5,7 +5,7 @@ import {
     followUser,
     setCurrentPage,
     setTotalUsersCount,
-    setUsers,
+    setUsers, toggleInProgress,
     toggleIsFetching,
     unfollowUser
 } from '../../../../redux/reducers/usersReducer/usersReducer';
@@ -14,21 +14,16 @@ import {Preloader} from '../../../../commun/preloader/Preloader';
 import {usersAPI} from '../../../../api/api';
 
 
-type PropsType = {
-    users: Array<UserType>
-    pageSize: number
-    totalCount: number
-    currentPage: number
-    isFetching: boolean
-    followUser: (userId: string) => void
-    unfollowUser: (userId: string) => void
-
+type MapDispatchToPropsType = {
     setUsers: (users: Array<UserType>) => void
     setTotalUsersCount: (totalCount: number) => void
     setCurrentPage: (currentPage: number) => void
+    followUser: (userId: string) => void
+    unfollowUser: (userId: string) => void
     toggleIsFetching: (isFetching: boolean) => void
+    toggleInProgress: (isFetching: boolean, userId: string) => void
 }
-
+type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
 export class UsersAPI extends React.Component<PropsType> {
 
@@ -61,9 +56,11 @@ export class UsersAPI extends React.Component<PropsType> {
                    pageSize={this.props.pageSize}
                    totalCount={this.props.totalCount}
                    currentPage={this.props.currentPage}
+                   inProgress={this.props.inProgress}
                    onClickPageChange={this.onClickPageChange.bind(this)}
                    followUser={this.props.followUser}
                    unfollowUser={this.props.unfollowUser}
+                   toggleInProgress={this.props.toggleInProgress}
             />
         </>
 
@@ -78,6 +75,7 @@ const mapStateToProps = (state: StatePropsType) => {
         totalCount: state.usersPage.totalCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        inProgress: state.usersPage.inProgress
     }
 }
 
@@ -90,6 +88,7 @@ export const UsersContainer = connect(mapStateToProps,
         followUser,
         unfollowUser,
         toggleIsFetching,
+        toggleInProgress
 
     })(UsersAPI)
 

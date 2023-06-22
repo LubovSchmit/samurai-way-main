@@ -3,11 +3,11 @@ import {ActionsType, UsersPageType, UserType} from '../../reduxStore/reduxStore'
 
 export type FollowUserACType = {
     type: 'FOLLOW-USER'
-    id: string
+    userId: string
 }
 export type UnfollowUserACType = {
     type: 'UNFOLLOW-USER'
-    id: string
+    userId: string
 }
 export type SetUsersACType = {
     type: 'SET-USERS'
@@ -25,20 +25,17 @@ export type ToggleIsFetchingACType = {
     type: 'TOGGLE-IS-FETCHING',
     isFetching: boolean
 }
-
-let initialState: UsersPageType = {
-    users: [],
-    pageSize: 100,
-    totalCount: 0,
-    currentPage: 1,
-    isFetching: false,
+export type ToggleInProgressACType = {
+    type: 'TOGGLE-IN-PROGRESS',
+    isFetching:  boolean,
+    userId: string
 }
 
-export const followUser = (id: string): FollowUserACType => {
-    return {type: 'FOLLOW-USER', id}
+export const followUser = (userId: string): FollowUserACType => {
+    return {type: 'FOLLOW-USER', userId: userId}
 }
-export const unfollowUser = (id: string): UnfollowUserACType => {
-    return {type: 'UNFOLLOW-USER', id}
+export const unfollowUser = (userId: string): UnfollowUserACType => {
+    return {type: 'UNFOLLOW-USER', userId: userId}
 }
 export const setUsers = (users: Array<UserType>): SetUsersACType => {
     return {type: 'SET-USERS', users}
@@ -49,21 +46,31 @@ export const setTotalUsersCount = (totalCount: number): SetTotalUsersCountACType
 export const setCurrentPage = (currentPage: number): SetCurrentPageACType => {
     return {type: 'SET-CURRENT-PAGE', currentPage}
 }
-
 export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingACType => {
     return {type: 'TOGGLE-IS-FETCHING', isFetching}
 }
+export const toggleInProgress = (isFetching: boolean, userId: string): ToggleInProgressACType => {
+    return {type: 'TOGGLE-IN-PROGRESS', isFetching, userId}
+}
 
+let initialState: UsersPageType = {
+    users: [],
+    pageSize: 100,
+    totalCount: 0,
+    currentPage: 1,
+    isFetching: false,
+    inProgress: [],
+}
 
 export const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
     switch (action.type) {
 
         case 'FOLLOW-USER': {
-            if (action.id)
+            if (action.userId)
                 return {
                     ...state,
                     users: state.users.map(u => {
-                        if (u.id === action.id) {
+                        if (u.id === action.userId) {
                             return {...u, followed: true}
                         }
                         return u
@@ -71,13 +78,12 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                 }
         }
             return {...state}
-
         case 'UNFOLLOW-USER': {
-            if (action.id)
+            if (action.userId)
                 return {
                     ...state,
                     users: state.users.map(u => {
-                        if (u.id === action.id) {
+                        if (u.id === action.userId) {
                             return {...u, followed: false}
                         }
                         return u
@@ -85,21 +91,24 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                 }
         }
             return {...state}
-
         case 'SET-USERS': {
             return {...state, users: action.users}
         }
-
         case 'SET-CURRENT-PAGE': {
             return {...state, currentPage: action.currentPage}
         }
-
         case 'SET-TOTAL-USERS-COUNT': {
             return {...state, totalCount: action.totalCount}
         }
-
         case 'TOGGLE-IS-FETCHING': {
             return {...state, isFetching: action.isFetching}
+        }
+        case 'TOGGLE-IN-PROGRESS': {
+            return {
+                ...state, inProgress: action.isFetching
+                    ? [...state.inProgress, action.userId]
+                    : state.inProgress.filter(id => id != action.userId)
+            }
         }
 
         default:

@@ -9,9 +9,11 @@ type PropsType = {
     pageSize: number
     totalCount: number
     currentPage: number
+    inProgress: Array<string>
     onClickPageChange: (p: number) => void
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
+    toggleInProgress: (isFetching: boolean, userId: string) => void
 }
 
 
@@ -26,7 +28,7 @@ export const Users = (props: PropsType) => {
     return <div className={style.usersContainer}>
 
         <div className={style.pageNumberContainer}>
-            {pages.map(p  => {
+            {pages.map(p => {
                 return <span key={p}
                              className={props.currentPage === p ? style.selectedPage : style.nonSelectedPage}
                              onClick={(e) => {
@@ -45,8 +47,11 @@ export const Users = (props: PropsType) => {
                   name={u.name}
                   status={u.status}
                   followed={u.followed}
+                  inProgress={props.inProgress}
                   followUser={props.followUser}
-                  unfollowUser={props.unfollowUser}/>
+                  unfollowUser={props.unfollowUser}
+                  toggleInProgress={props.toggleInProgress}
+            />
         )}
     </div>
 

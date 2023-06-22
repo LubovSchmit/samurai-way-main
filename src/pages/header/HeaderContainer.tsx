@@ -2,7 +2,7 @@ import React from 'react';
 import {StatePropsType, UserDataType} from '../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
 import {Header} from './Header';
-import {setAuthUserData} from '../../redux/reducers/aythReducer/authReducer';
+import {setAuthUserData} from '../../redux/reducers/authReducer/authReducer';
 import {authAPI} from '../../api/api';
 
 

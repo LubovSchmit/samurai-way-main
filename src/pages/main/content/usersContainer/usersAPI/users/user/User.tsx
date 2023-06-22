@@ -10,34 +10,32 @@ type PropsType = {
     photoSmall: string
     status: string
     followed: boolean
+    inProgress: Array<string>
     followUser: (userId: string) => void
     unfollowUser: (userId: string) => void
+    toggleInProgress: (isFetching: boolean, userId: string) => void
 }
 
 export const User = (props: PropsType) => {
-
     const onClickFollowUserButton = () => {
-        /* axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.userId}`,
-             {},
-             {withCredentials: true})*/
+        props.toggleInProgress(true, props.userId)
         followAPI.postFollow(props.userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     props.followUser(props.userId)
                 }
+                props.toggleInProgress(false, props.userId)
             })
-
     }
     const onClickUnfollowUserButton = () => {
-        /*       axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.userId}`,
-                   {withCredentials: true})*/
+        props.toggleInProgress(true, props.userId)
         followAPI.deleteFollow(props.userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     props.unfollowUser(props.userId)
                 }
+                props.toggleInProgress(false, props.userId)
             })
-
     }
 
     return (
@@ -65,8 +63,10 @@ export const User = (props: PropsType) => {
             <div className={style.userFollowAndButtonContainer}>
                 {props.followed ?
                     <button className={style.buttonUnfollow}
+                            disabled={props.inProgress.some(userId => userId === props.userId)}
                             onClick={onClickUnfollowUserButton}>Unfollow </button> :
                     <button className={style.buttonFollow}
+                            disabled={props.inProgress.some(userId => userId === props.userId)}
                             onClick={onClickFollowUserButton}>Follow </button>}
             </div>
 

@@ -6,12 +6,12 @@ import {
     FollowUserACType,
     SetCurrentPageACType,
     SetTotalUsersCountACType,
-    SetUsersACType,
+    SetUsersACType, ToggleInProgressACType,
     ToggleIsFetchingACType,
     UnfollowUserACType,
     usersReducer
 } from '../reducers/usersReducer/usersReducer';
-import {authReducer, AuthUserACType} from '../reducers/aythReducer/authReducer';
+import {authReducer, AuthUserACType} from '../reducers/authReducer/authReducer';
 
 export type ActionsType =
     AddPostACType |
@@ -23,17 +23,18 @@ export type ActionsType =
     SetTotalUsersCountACType |
     ToggleIsFetchingACType |
     SetUserProfileACType |
-    AuthUserACType
+    AuthUserACType |
+    ToggleInProgressACType
 
 
 export type UserType = {
     id: string
+    name: string
+    status: string
     photos: {
         small: string
         large: string
     }
-    name: string
-    status: string
     followed: boolean
 }
 export type DialogNameType = {
@@ -97,6 +98,7 @@ export type UsersPageType = {
     totalCount: number,
     currentPage: number,
     isFetching: boolean,
+    inProgress: Array<string>,
 }
 export type AuthType = {
     data: UserDataType,
