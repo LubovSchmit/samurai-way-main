@@ -17,7 +17,9 @@ type PropsType = {
 export const User = (props: PropsType) => {
 
     const onClickFollowUserButton = () => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {withCredentials: true})
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+            {},
+            {withCredentials: true})
             .then(response => {
                if (response.data.resultCode == 0) {
                    props.followUser(props.id)
@@ -26,7 +28,8 @@ export const User = (props: PropsType) => {
 
     }
     const onClickUnfollowUserButton = () => {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {withCredentials: true})
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+            {withCredentials: true})
             .then(response => {
                 if (response.data.resultCode == 0) {
                     props.unfollowUser(props.id)

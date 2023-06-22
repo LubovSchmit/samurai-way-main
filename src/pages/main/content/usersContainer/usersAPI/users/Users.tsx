@@ -30,7 +30,6 @@ export const Users = (props: PropsType) => {
                 return <span key={p}
                              className={props.currentPage === p ? style.selectedPage : style.nonSelectedPage}
                              onClick={(e) => {
-
                                  props.onClickPageChange(p)
                              }}>
                             {p}
