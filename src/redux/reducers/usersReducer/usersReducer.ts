@@ -1,4 +1,5 @@
-import {ActionsType, UsersPageType, UserType} from '../../reduxStore/reduxStore';
+import {ActionsType, DispatchType, UsersPageType, UserType} from '../../reduxStore/reduxStore';
+import {usersAPI} from '../../../api/api';
 
 
 export type FollowUserACType = {
@@ -115,3 +116,18 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
             return state
     }
 }
+
+
+
+ export const getUsers = (currentPage: number, pageSize: number)=> {
+    return (dispatch: DispatchType)=> {
+         dispatch(toggleIsFetching(true))
+
+         usersAPI.getUsers(currentPage,pageSize)
+             .then(data => {
+                 dispatch(toggleIsFetching(false))
+                 dispatch(setUsers(data.items));
+                 dispatch(setTotalUsersCount(data.totalCount));
+             })
+     }
+ }
