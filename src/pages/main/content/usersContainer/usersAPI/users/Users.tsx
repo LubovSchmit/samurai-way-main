@@ -11,9 +11,9 @@ type PropsType = {
     currentPage: number
     inProgress: Array<string>
     onClickPageChange: (p: number) => void
-    followUser: (userId: string) => void
-    unfollowUser: (userId: string) => void
-    toggleInProgress: (isFetching: boolean, userId: string) => void
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
+
 }
 
 
@@ -48,9 +48,9 @@ export const Users = (props: PropsType) => {
                   status={u.status}
                   followed={u.followed}
                   inProgress={props.inProgress}
-                  followUser={props.followUser}
-                  unfollowUser={props.unfollowUser}
-                  toggleInProgress={props.toggleInProgress}
+                  follow={props.follow}
+                  unfollow={props.unfollow}
+
             />
         )}
     </div>

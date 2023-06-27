@@ -7,13 +7,9 @@ import {UsersContainer} from './usersContainer/UsersContainer';
 import {ProfileContainer} from './profile/ProfileContainer';
 
 
-type PropsType = {
-   /* state: StatePropsType,
-    dispatch: (action: ActionsType) => void*/
 
-}
 
-export const Content = (props: PropsType) => {
+export const Content = () => {
 
     return (
         <div id="content" className={style.contentBlock}>

@@ -14,14 +14,6 @@ export const usersAPI = {
             .then(response => response.data)
     }
 }
-
-export const profileAPI = {
-    getProfile(userId: string) {
-        return instance.get(`profile/` + userId)
-            .then(response => response.data)
-    }
-}
-
 export const followAPI = {
     deleteFollow(userId: string) {
         return instance.delete(`follow/${userId}`)
@@ -29,6 +21,12 @@ export const followAPI = {
     },
     postFollow(userId: string) {
         return instance.post(`follow/${userId}`, {})
+            .then(response => response.data)
+    }
+}
+export const profileAPI = {
+    getProfile(userId: string) {
+        return instance.get(`profile/` + userId)
             .then(response => response.data)
     }
 }

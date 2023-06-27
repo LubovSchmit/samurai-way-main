@@ -2,7 +2,7 @@ import React from 'react';
 import style from './User.module.scss';
 import userPhoto from '../../../../../../../assets/images/userPhoto.jpg'
 import {NavLink} from 'react-router-dom';
-import {followAPI} from '../../../../../../../api/api';
+
 
 type PropsType = {
     userId: string
@@ -11,31 +11,33 @@ type PropsType = {
     status: string
     followed: boolean
     inProgress: Array<string>
-    followUser: (userId: string) => void
-    unfollowUser: (userId: string) => void
-    toggleInProgress: (isFetching: boolean, userId: string) => void
+
+    follow:(userId: string) => void
+    unfollow:(userId: string) => void
 }
 
 export const User = (props: PropsType) => {
     const onClickFollowUserButton = () => {
-        props.toggleInProgress(true, props.userId)
+        props.follow(props.userId)
+        /*props.toggleInProgress(true, props.userId)
         followAPI.postFollow(props.userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     props.followUser(props.userId)
                 }
                 props.toggleInProgress(false, props.userId)
-            })
+            })*/
     }
     const onClickUnfollowUserButton = () => {
-        props.toggleInProgress(true, props.userId)
+        props.unfollow(props.userId)
+        /*props.toggleInProgress(true, props.userId)
         followAPI.deleteFollow(props.userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     props.unfollowUser(props.userId)
                 }
                 props.toggleInProgress(false, props.userId)
-            })
+            })*/
     }
 
     return (

@@ -2,12 +2,13 @@ import React from 'react';
 import {StatePropsType, UserDataType} from '../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
 import {Header} from './Header';
-import {setAuthUserData} from '../../redux/reducers/authReducer/authReducer';
-import {authAPI} from '../../api/api';
+import {authMe, setAuthUserData} from '../../redux/reducers/authReducer/authReducer';
+
 
 
 type MapDispatchToPropsType = {
     setAuthUserData: (data: UserDataType) => void
+    authMe: ()=> void
 }
 
 type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
@@ -15,15 +16,12 @@ type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
 export class AuthAPI extends React.Component<PropsType> {
     componentDidMount() {
-        /* axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-             withCredentials: true
-         })*/
-
-        authAPI.authMe().then(data => {
+        this.props.authMe()
+        /*authAPI.authMe().then(data => {
             if (data.resultCode === 0) {
                 this.props.setAuthUserData(data.data)
             }
-        })
+        })*/
     }
 
 
@@ -49,7 +47,8 @@ const mapStateToProps = (state: StatePropsType) => {
 
 export const HeaderContainer = connect(mapStateToProps,
     {
-        setAuthUserData
+        setAuthUserData,
+        authMe,
     })(AuthAPI)
 
 

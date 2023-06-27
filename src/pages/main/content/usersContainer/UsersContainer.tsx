@@ -1,23 +1,19 @@
 import React from 'react';
 import {StatePropsType} from '../../../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
-import {
-    followUser, getUsers,
-    setCurrentPage,
-    toggleInProgress,
-    unfollowUser
-} from '../../../../redux/reducers/usersReducer/usersReducer';
+import {follow, getUsers, setCurrentPage, unfollow} from '../../../../redux/reducers/usersReducer/usersReducer';
 import {Users} from './usersAPI/users/Users';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 
 
 type MapDispatchToPropsType = {
     setCurrentPage: (currentPage: number) => void
-    followUser: (userId: string) => void
-    unfollowUser: (userId: string) => void
-    toggleInProgress: (isFetching: boolean, userId: string) => void
+
     getUsers: (currentPage: number, pageSize: number) => void
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
 }
+
 type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
 export class UsersAPI extends React.Component<PropsType> {
@@ -27,17 +23,8 @@ export class UsersAPI extends React.Component<PropsType> {
     }
 
     onClickPageChange(currentPage: number) {
-
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
-
         this.props.setCurrentPage(currentPage);
-
-        /* this.props.toggleIsFetching(true)
-         usersAPI.getUsers(currentPage, this.props.pageSize)
-             .then(data => {
-                 this.props.toggleIsFetching(false)
-                 this.props.setUsers(data.items)
-             })*/
     }
 
     render() {
@@ -49,9 +36,8 @@ export class UsersAPI extends React.Component<PropsType> {
                    currentPage={this.props.currentPage}
                    inProgress={this.props.inProgress}
                    onClickPageChange={this.onClickPageChange.bind(this)}
-                   followUser={this.props.followUser}
-                   unfollowUser={this.props.unfollowUser}
-                   toggleInProgress={this.props.toggleInProgress}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
             />
         </>
 
@@ -74,9 +60,9 @@ const mapStateToProps = (state: StatePropsType) => {
 export const UsersContainer = connect(mapStateToProps,
     {
         setCurrentPage,
-        followUser,
-        unfollowUser,
-        toggleInProgress,
+        follow,
+        unfollow,
+        /*toggleInProgress,*/
 
         getUsers,
 

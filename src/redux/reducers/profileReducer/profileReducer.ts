@@ -1,5 +1,7 @@
-import {ActionsType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
+import {ActionsType, DispatchType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
 import myPhoto from '../../../assets/images/ava.jpg'
+import {followAPI, profileAPI} from '../../../api/api';
+import {toggleInProgress, unfollowUser} from '../usersReducer/usersReducer';
 
 export type SetUserProfileACType = {
     type: 'SET-USER-PROFILE',
@@ -47,5 +49,15 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
         }
         default:
             return state
+    }
+}
+
+
+export const getProfile = (userId: string)=> {
+    return (dispatch: DispatchType)=> {
+        profileAPI.getProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data))
+            })
     }
 }

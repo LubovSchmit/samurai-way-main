@@ -1,4 +1,6 @@
-import {ActionsType, AuthType, UserDataType} from '../../reduxStore/reduxStore';
+import {ActionsType, AuthType, DispatchType, UserDataType} from '../../reduxStore/reduxStore';
+import {authAPI, profileAPI} from '../../../api/api';
+import {setUserProfile} from '../profileReducer/profileReducer';
 
 
 export type AuthUserACType = {
@@ -40,3 +42,15 @@ export const authReducer = (state: AuthType = initialState, action: ActionsType)
             return state
     }
 }
+
+export const authMe = ()=> {
+    return (dispatch: DispatchType)=> {
+        authAPI.authMe().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(data.data))
+            }
+        })
+    }
+}
+
+

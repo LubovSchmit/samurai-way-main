@@ -1,5 +1,5 @@
 import {ActionsType, DispatchType, UsersPageType, UserType} from '../../reduxStore/reduxStore';
-import {usersAPI} from '../../../api/api';
+import {followAPI, usersAPI} from '../../../api/api';
 
 
 export type FollowUserACType = {
@@ -129,5 +129,31 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
                  dispatch(setUsers(data.items));
                  dispatch(setTotalUsersCount(data.totalCount));
              })
+     }
+ }
+
+ export const follow = (userId: string)=> {
+    return (dispatch: DispatchType)=> {
+        dispatch(toggleInProgress(true, userId))
+        followAPI.postFollow(userId)
+            .then(data => {
+                if (data.resultCode == 0) {
+                    dispatch(followUser(userId))
+                }
+                dispatch(toggleInProgress(false, userId))
+            })
+     }
+ }
+
+ export const unfollow = (userId: string)=> {
+    return (dispatch: DispatchType)=> {
+        dispatch(toggleInProgress(true, userId))
+        followAPI.deleteFollow(userId)
+            .then(data => {
+                if (data.resultCode == 0) {
+                    dispatch(unfollowUser(userId))
+                }
+                dispatch(toggleInProgress(false, userId))
+            })
      }
  }
