@@ -4,22 +4,26 @@ import {Main} from './pages/main/Main';
 import {Footer} from './pages/footer/Footer';
 import {Route} from 'react-router-dom';
 import {HeaderContainer} from './pages/header/HeaderContainer';
+import {Login} from './pages/login/Login';
 
 
-type PropsType = {
-    /*state: StatePropsType,
-    dispatch: (action: ActionsType) => void*/
+/*type PropsType = {
+    /!*state: StatePropsType,
+    dispatch: (action: ActionsType) => void*!/
 
-}
+}*/
 
 
-function App(props: PropsType) {
+function App() {
     return (
         <div className={style.appBlock}>
 
             <HeaderContainer/>
+            <Route path={'/login'} render={() => <Login />}/>
             <Route path={'/'} render={() => <Main />}/>
             <Footer/>
+
+
 
         </div>
     );

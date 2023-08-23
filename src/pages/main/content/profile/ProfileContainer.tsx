@@ -3,12 +3,13 @@ import {ProfileType, StatePropsType} from '../../../../redux/reduxStore/reduxSto
 import {Profile} from './Profile';
 import {getProfile, setUserProfile} from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
-import {RouteComponentProps, withRouter} from 'react-router-dom';
+import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 
 
 type MapDispatchToPropsType = {
     setUserProfile: (profile: ProfileType) => void
-    getProfile: (userId: string)=> void
+    getProfile: (userId: string) => void
+
 }
 
 type PathParamsType = {
@@ -19,7 +20,8 @@ type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType & R
 
 const mapStateToProps = (state: StatePropsType) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        isAuth: state.auth.data.isAuth
     }
 }
 
@@ -27,13 +29,10 @@ class ProfileAPI extends React.Component<PropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         this.props.getProfile(userId)
-        /* profileAPI.getProfile(userId)
-             .then(data => {
-                 this.props.setUserProfile(data)
-             })*/
     }
 
     render() {
+        if(!this.props.isAuth) return <Redirect to={"/login"}/>
         return <>
             <Profile {...this.props} profile={this.props.profile}/>
         </>

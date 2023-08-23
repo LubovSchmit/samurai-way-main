@@ -26,7 +26,8 @@ export const DialogsContainer = (props: PropsType) => {
 let mapStateToProps = (state: StatePropsType) => {
     return {
         dialogNames: state.dialogsPage.dialogNames,
-        messages: state.dialogsPage.messages
+        messages: state.dialogsPage.messages,
+        isAuth: state.auth.data.isAuth
     }
 }
 

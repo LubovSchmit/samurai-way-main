@@ -4,12 +4,13 @@ import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
 import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
 import {PostsContainer} from '../posts/PostsContainer';
-import {Route} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 
 
 type PropsType = {
     profile: ProfileType
+
 }
 
 export const Profile = (props: PropsType) => {
@@ -17,6 +18,7 @@ export const Profile = (props: PropsType) => {
     if(!props.profile) {
         return <Preloader/>
     }
+
 
 
     return (
