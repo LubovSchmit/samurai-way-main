@@ -1,25 +1,42 @@
 import React from 'react';
 import {addPost} from '../../../../redux/reducers/postsReducer/postsReducer';
-import {StatePropsType} from '../../../../redux/reduxStore/reduxStore';
+import {PostType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
 import {Posts} from './Posts';
 import {connect} from 'react-redux';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import {toggleIsFetching} from '../../../../redux/reducers/usersReducer/usersReducer';
 import {profileAPI} from '../../../../api/api';
+import {WithAuthRedirect} from '../../../../hoc/WithAuthRedirect';
+import {compose} from 'redux';
 
 type MapDispatchToPropsType = {
     addPost: (newPostMessage: string) => void
     toggleIsFetching: (isFetching: boolean) => void
 }
+type MapStateToPropsType = {
+    userId: string
+    posts: Array<PostType>
+    postText: string
+    photo: string
+    isFetching: boolean
+}
+type PropsType = MapStateToPropsType & MapDispatchToPropsType
 
-export type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
+const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
+    return {
+        userId: state.profilePage.profile.userId,
+        posts: state.postsPage.posts,
+        postText: state.postsPage.newPostText,
+        photo: state.profilePage.profile.photos.small,
+        isFetching: state.usersPage.isFetching,
+    }
+}
 
 
-export class PostsAPI extends React.Component<PropsType> {
+class PostsContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.toggleIsFetching(true)
         profileAPI.getProfile(this.props.userId)
-        /*axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)*/
             .then(data => {
                 this.props.toggleIsFetching(false)
                 this.props.addPost(data)
@@ -42,19 +59,9 @@ export class PostsAPI extends React.Component<PropsType> {
 }
 
 
-const mapStateToProps = (state: StatePropsType) => {
-    return {
-        userId: state.profilePage.profile.userId,
-        posts: state.postsPage.posts,
-        postText: state.postsPage.newPostText,
-        photo: state.profilePage.profile.photos.small,
-        isFetching: state.usersPage.isFetching,
-    }
-}
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {addPost, toggleIsFetching}),
+    WithAuthRedirect
+)(PostsContainer)
 
 
-export const PostsContainer = connect(mapStateToProps,
-    {
-        addPost,
-        toggleIsFetching
-    })(PostsAPI)

@@ -3,14 +3,13 @@ import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
 import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
-import {PostsContainer} from '../posts/PostsContainer';
-import {Redirect, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {Preloader} from '../../../../commun/preloader/Preloader';
+import PostsContainer from '../posts/PostsContainer';
 
 
 type PropsType = {
     profile: ProfileType
-
 }
 
 export const Profile = (props: PropsType) => {
@@ -18,8 +17,6 @@ export const Profile = (props: PropsType) => {
     if(!props.profile) {
         return <Preloader/>
     }
-
-
 
     return (
         <div className={style.profileContainer}>

@@ -1,8 +1,10 @@
 import React from 'react';
 import style from './Settings.module.scss';
+import {compose} from 'redux';
+import {WithAuthRedirect} from '../../../../hoc/WithAuthRedirect';
 
 
-export const Settings = () => {
+const Settings = () => {
     return (
         <div className={style.settingsContainer}>
 
@@ -13,3 +15,7 @@ export const Settings = () => {
         </div>
     )
 };
+
+export default compose<React.ComponentType>(
+    WithAuthRedirect,
+)(Settings)

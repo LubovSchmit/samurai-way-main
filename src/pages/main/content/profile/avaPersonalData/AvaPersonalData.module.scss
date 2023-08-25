@@ -6,26 +6,39 @@
   background-color: darkgoldenrod;
   height: 100%;
   width: 100%;
-  @include flex(row, space-between, center, wrap);
+  @include flex(column, space-between, center, wrap);
 
-  .avaBlock {
-    flex: 1;
- /*   background-image: url('./../../../../../assets/images/ava.jpg');
-    background-size: cover;
-    background-position: center;*/
-    width: 100%;
-    height: 100%;
+  .avaStatusBlock {
+    @include flex(row, space-between, center, wrap);
+    .avaBlock {
+      flex: 1;
+      /*   background-image: url('./../../../../../assets/images/ava.jpg');
+         background-size: cover;
+         background-position: center;*/
+      width: 60px;
+      height: 60px;
+      margin: 10px;
+    }
 
-    margin: 10px;
+    .statusBlock:nth-of-type(3) {
+      flex: 3;
+      width: 100%;
+      border: 1px solid blue;
+      background-color: orange;
+      margin: 10px;
+
+    }
 
   }
 
+
   .personalDataBlock:nth-of-type(2) {
-    flex: 6;
-    width: 100%;
+    flex: 2;
+  /*  width: 100%;*/
     border: 1px solid blue;
     background-color: orange;
     margin: 10px;
 
   }
+
 }

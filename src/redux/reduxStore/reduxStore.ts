@@ -91,7 +91,7 @@ export type PostsPageType = {
 export type DialogsPageType = {
     dialogNames: Array<DialogNameType>
     messages: Array<MessageType>
-    newMessage: string
+    newMessage?: string
 }
 export type UsersPageType = {
     users: Array<UserType>,
@@ -107,17 +107,20 @@ export type AuthType = {
 }
 
 
-export type StatePropsType = {
+/*export type StatePropsType = {
     profilePage: ProfilePageType
     postsPage: PostsPageType
     dialogsPage: DialogsPageType
     usersPage: UsersPageType
     auth: AuthType
-}
+}*/
 export type DispatchType = (action: ActionsType, anyArgument?: any) => void
 
+type ReducersType = typeof rootReducer
+export type StatePropsType = ReturnType<ReducersType>
 
-let reducers = combineReducers({
+
+let rootReducer = combineReducers({
     postsPage: postsReducer,
     dialogsPage: dialogsReducer,
     profilePage: profileReducer,
@@ -125,7 +128,7 @@ let reducers = combineReducers({
     auth: authReducer,
 })
 
-export let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 // @ts-ignore
 window.store = store

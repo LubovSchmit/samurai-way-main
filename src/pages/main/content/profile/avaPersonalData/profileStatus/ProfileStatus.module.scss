@@ -1,0 +1,24 @@
+@import '../../../../../../commun/styles/sass/mixins';
+
+
+
+.statusContainer {
+  border: 1px red solid;
+  background-color: palevioletred;
+
+
+  .statusBlock {
+    color: darkslategrey;
+  }
+
+  .inputAndButtonBlock {
+    @include flex(row, space-between, center, wrap);
+    .inputStatusBlock {
+      font-size: medium;
+      color: darkslategrey;
+    }
+  }
+
+
+
+}
