@@ -12,7 +12,13 @@ class ProfileStatus extends React.Component<PropsType> {
     }
 
     activateEdtMode = () => {
-        alert('hey')
+        this.setState({editMode: true})
+        this.state.editMode = true
+    }
+
+    deActivateEdtMode = () => {
+        this.setState({editMode: false})
+        this.state.editMode = false
     }
 
 
@@ -29,7 +35,7 @@ class ProfileStatus extends React.Component<PropsType> {
                 {this.state.editMode &&
                 <div className={style.inputAndButtonBlock}>
                     <div className={style.inputStatusBlock}>
-                        <input value={this.props.status}/>
+                        <input autoFocus={true} onBlur={this.deActivateEdtMode} value={this.props.status}/>
                     </div>
 
                     <div className={style.profileStatusContainer}>
