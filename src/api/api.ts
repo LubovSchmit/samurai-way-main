@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {PhotosType} from '../redux/reduxStore/reduxStore';
 
 
 const instance = axios.create({
@@ -26,7 +27,19 @@ export const followAPI = {
 }
 export const profileAPI = {
     getProfile(userId: string) {
-        return instance.get(`profile/` + userId)
+        return instance.get(`profile/${userId}`)
+            .then(response => response.data)
+    },
+    getStatus(userId: string) {
+        return instance.get(`profile/status/${userId}`)
+            .then(response => response.data)
+    },
+    updateStatus(status: string){
+        return instance.put(`profile/status/`, {status})
+            .then(response => response.data)
+    },
+    uploadPhoto(image: PhotosType) {
+        return instance.put(`profile/photo/`, {image})
             .then(response => response.data)
     }
 }

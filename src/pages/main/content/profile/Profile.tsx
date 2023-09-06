@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
-import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
+import {PhotosType, ProfileType} from '../../../../redux/reduxStore/reduxStore';
 import {Route} from 'react-router-dom';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import PostsContainer from '../posts/PostsContainer';
@@ -10,11 +10,14 @@ import PostsContainer from '../posts/PostsContainer';
 
 type PropsType = {
     profile: ProfileType
+    status: string
+    updateStatus: (status: string) => void
+
 }
 
 export const Profile = (props: PropsType) => {
 
-    if(!props.profile) {
+    if (!props.profile) {
         return <Preloader/>
     }
 
@@ -27,7 +30,10 @@ export const Profile = (props: PropsType) => {
 
             <div className={style.personalInfo}>
                 <div>
-                    <AvaPersonalData profile={props.profile}/>
+                    <AvaPersonalData profile={props.profile}
+                                     status={props.status}
+                                     updateStatus={props.updateStatus}
+                    />
                 </div>
             </div>
             <div>

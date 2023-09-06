@@ -14,14 +14,10 @@ export const PersonalData = (props: PropsType) => {
                 <div className={style.name}>{props.profile.fullName}</div>
             </div>
 
-            <div>
-                <div className={style.headline}> About me:</div>
-                <div className={style.aboutMe}>{props.profile.aboutMe}</div>
-            </div>
 
             <div>{props.profile.lookingForAJob}</div>
 
-            <div>{props.profile.LookingForAJobDescription}</div>
+            <div>{props.profile.lookingForAJobDescription}</div>
 
             <div>
                 <div className={style.headline}> Contacts:</div>

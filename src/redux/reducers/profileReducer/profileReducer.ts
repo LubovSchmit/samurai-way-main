@@ -1,36 +1,41 @@
-import {ActionsType, DispatchType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
+import {ActionsType, DispatchType, PhotosType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
 import myPhoto from '../../../assets/images/ava.jpg'
-import {followAPI, profileAPI} from '../../../api/api';
-import {toggleInProgress, unfollowUser} from '../usersReducer/usersReducer';
+import {profileAPI} from '../../../api/api';
 
 export type SetUserProfileACType = {
     type: 'SET-USER-PROFILE',
     profile: ProfileType
 }
+export type SetUserStatusACType = {
+    type: 'SET-USER-STATUS',
+    status: string
+}
+
 
 
 let initialState: ProfilePageType = {
     profile: {
-        aboutMe: 'Hi',
+        userId: '17358',
+        lookingForAJob: false,
+        lookingForAJobDescription: null,
+        fullName: 'Luba',
         contacts: {
-            facebook: 'facebook.com',
-            website: null,
-            vk: 'vk.com',
-            twitter: 'twitter.com',
-            instagram: 'instagram.com',
-            youtube: 'youtube.com',
             github: 'github.com',
+            vk: 'vk.com',
+            facebook: 'facebook.com',
+            instagram: 'instagram.com',
+            twitter: 'twitter.com',
+            website: null,
+            youtube: 'youtube.com',
             mainLink: null,
         },
-        lookingForAJob: false,
-        LookingForAJobDescription: null,
-        fullName: 'Luba',
-        userId: '1',
         photos: {
-            small: myPhoto,
-            large: myPhoto
+            small: null,
+            large: null
         }
     },
+    status: '',
+
 }
 
 
@@ -40,6 +45,12 @@ export const setUserProfile = (profile: ProfileType): SetUserProfileACType => {
         profile
     }
 }
+export const setUserStatus = (status: string): SetUserStatusACType => {
+    return {
+        type: 'SET-USER-STATUS',
+        status
+    }
+}
 
 
 export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType): ProfilePageType => {
@@ -47,17 +58,38 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
         case 'SET-USER-PROFILE': {
             return {...state, profile: action.profile}
         }
+        case 'SET-USER-STATUS': {
+            return {...state, status: action.status}
+        }
         default:
-            return state
+            return state;
     }
 }
 
 
-export const getProfile = (userId: string)=> {
-    return (dispatch: DispatchType)=> {
+export const getProfile = (userId: string) => {
+    return (dispatch: DispatchType) => {
         profileAPI.getProfile(userId)
             .then(data => {
                 dispatch(setUserProfile(data))
+            })
+    }
+}
+export const getStatus = (userId: string) => {
+    return (dispatch: DispatchType) => {
+        profileAPI.getStatus(userId)
+            .then(data => {
+                dispatch(setUserStatus(data))
+            })
+    }
+}
+export const updateStatus = (status: string) => {
+    return (dispatch: DispatchType) => {
+        profileAPI.updateStatus(status)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(setUserStatus(status))
+                }
             })
     }
 }

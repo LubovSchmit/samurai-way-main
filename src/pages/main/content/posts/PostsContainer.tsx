@@ -5,7 +5,6 @@ import {Posts} from './Posts';
 import {connect} from 'react-redux';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import {toggleIsFetching} from '../../../../redux/reducers/usersReducer/usersReducer';
-import {profileAPI} from '../../../../api/api';
 import {WithAuthRedirect} from '../../../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 
@@ -17,7 +16,7 @@ type MapStateToPropsType = {
     userId: string
     posts: Array<PostType>
     postText: string
-    photo: string
+    photo: string | null
     isFetching: boolean
 }
 type PropsType = MapStateToPropsType & MapDispatchToPropsType
@@ -34,14 +33,14 @@ const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
 
 
 class PostsContainer extends React.Component<PropsType> {
-    componentDidMount() {
+/*    componentDidMount() {
         this.props.toggleIsFetching(true)
         profileAPI.getProfile(this.props.userId)
             .then(data => {
                 this.props.toggleIsFetching(false)
                 this.props.addPost(data)
             })
-    }
+    }*/
 
     render() {
         return <>

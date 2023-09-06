@@ -1,7 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {AddPostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {AddNewMessageACType, dialogsReducer} from '../reducers/dialogsReducer/dialogsReducer';
-import {profileReducer, SetUserProfileACType} from '../reducers/profileReducer/profileReducer';
+import {
+    profileReducer,
+    SetUserProfileACType,
+    SetUserStatusACType,
+
+} from '../reducers/profileReducer/profileReducer';
 import {
     FollowUserACType,
     SetCurrentPageACType,
@@ -24,9 +29,15 @@ export type ActionsType =
     SetTotalUsersCountACType |
     ToggleIsFetchingACType |
     SetUserProfileACType |
+    SetUserStatusACType |
     AuthUserACType |
     ToggleInProgressACType
 
+
+export type PhotosType = {
+    small: string | null,
+    large: string | null
+}
 
 export type UserType = {
     id: string
@@ -52,28 +63,25 @@ export type PostType = {
     likesCount: number
 }
 export type ProfileType = {
-    aboutMe: string,
+    userId: string,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string | null,
+    fullName: string,
     contacts: {
-        facebook: string | null,
-        website: string | null,
-        vk: string | null,
-        twitter: string | null,
-        instagram: string | null,
-        youtube: string | null,
         github: string | null,
+        vk: string | null,
+        facebook: string | null,
+        instagram: string | null,
+        twitter: string | null,
+        website: string | null,
+        youtube: string | null,
         mainLink: string | null,
     },
-    lookingForAJob: boolean,
-    LookingForAJobDescription: string | null,
-    fullName: string,
-    userId: string,
-    photos: {
-        small: string,
-        large: string
-    }
+    photos: PhotosType
+
 }
 export type UserDataType = {
-    id: string | null
+    id: number | null
     email: string | null
     login: string | null
     isAuth: boolean
@@ -83,6 +91,8 @@ export type UserDataType = {
 
 export type ProfilePageType = {
     profile: ProfileType,
+    status: string,
+
 }
 export type PostsPageType = {
     newPostText: string

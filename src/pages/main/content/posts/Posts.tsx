@@ -8,10 +8,8 @@ type PropsType = {
     userId: string
     posts: Array<PostType>
     postText: string
-    photo: string
-
+    photo: string | null
     addPost: (newPostMessage: string) => void
-
 }
 
 

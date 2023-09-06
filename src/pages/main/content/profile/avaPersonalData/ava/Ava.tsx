@@ -3,9 +3,11 @@ import style from './Ava.module.scss';
 import userPhoto from '../../../../../../assets/images/userPhoto.jpg';
 
 
+
 type PropsType = {
     id: string
-    photo: string
+    photo: string | null
+
 }
 export const Ava = (props: PropsType) => {
     return (

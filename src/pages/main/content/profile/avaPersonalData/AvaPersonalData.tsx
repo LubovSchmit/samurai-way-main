@@ -2,11 +2,14 @@ import style from './AvaPersonalData.module.scss';
 import React from 'react';
 import {Ava} from './ava/Ava';
 import {PersonalData} from './personalData/PersonalData';
-import {ProfileType} from '../../../../../redux/reduxStore/reduxStore';
+import {PhotosType, ProfileType} from '../../../../../redux/reduxStore/reduxStore';
 import ProfileStatus from './profileStatus/ProfileStatus';
 
 type PropsType = {
     profile: ProfileType
+    status: string
+    updateStatus: (status: string)=> void
+
 }
 
 export const AvaPersonalData = (props: PropsType) => {
@@ -15,12 +18,14 @@ export const AvaPersonalData = (props: PropsType) => {
 
             <div className={style.avaStatusBlock}>
                 <div className={style.avaBlock}>
-                    <Ava photo={props.profile.photos.small} id={props.profile.userId}/>
+                    Photo
+                    <Ava photo={props.profile.photos.small}
+                         id={props.profile.userId}/>
                 </div>
 
                 <div className={style.statusBlock}>
                     Status
-                    <ProfileStatus status={'hey'}/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
 

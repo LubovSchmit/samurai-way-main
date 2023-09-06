@@ -7,7 +7,7 @@ type PropsType = {
     isAuth: boolean
     login: string | null
     email: string | null
-    userId: string | null
+    userId: number | null
 
 
 }
