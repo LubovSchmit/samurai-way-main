@@ -18,6 +18,7 @@ import {
 } from '../reducers/usersReducer/usersReducer';
 import {authReducer, AuthUserACType} from '../reducers/authReducer/authReducer';
 import thunkMiddleware from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form';
 
 export type ActionsType =
     AddPostACType |
@@ -136,6 +137,7 @@ let rootReducer = combineReducers({
     profilePage: profileReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    form: formReducer,
 })
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
