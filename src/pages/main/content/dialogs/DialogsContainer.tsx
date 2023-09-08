@@ -21,8 +21,8 @@ let mapStateToProps = (state: StatePropsType): DialogsPageType => {
 
 let mapDispatchToProps = (dispatch: DispatchType): MapDispatchToPropsType => {
     return {
-        sendMessage: (newMessage: string) => {
-            dispatch(addMessageAC(newMessage))
+        sendMessage: (newMessageBody: string) => {
+            dispatch(addMessageAC(newMessageBody))
         }
     }
 }

@@ -1,33 +1,29 @@
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import style from './Posts.module.scss';
 import {Post} from './post/Post';
 import {PostType} from '../../../../redux/reduxStore/reduxStore';
+import {AddNewPostReduxForm} from './AddNewPostReduxForm';
 
 
 type PropsType = {
     userId: string
     posts: Array<PostType>
-    postText: string
+    newPostText: string | undefined
     photo: string | null
     addPost: (newPostMessage: string) => void
 }
 
 
 export const Posts = (props: PropsType) => {
-    let [newPostMessage, setNewPostMessage] = useState<string>('')
 
-    const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setNewPostMessage(e.currentTarget.value)
-    }
-    const addPostHandler = () => {
-        if (newPostMessage.trim() === '') return
-        props.addPost(newPostMessage)
-        setNewPostMessage('')
+    const onSubmit = (formData: any) => {
+        if (formData.newPostText.trim() === '') return
+        props.addPost(formData.newPostText)
     }
 
     let postsElements = props.posts
         .map(p => <Post key={p.userId} id={p.userId}
-                        postText={p.postText}
+                        newPostText={p.newPostText}
                         likesCount={p.likesCount}
                         photo={props.photo}
         />)
@@ -37,14 +33,7 @@ export const Posts = (props: PropsType) => {
 
             <div className={style.textareaButtonContainer}>
 
-                <textarea className={style.textarea}
-                          placeholder={'Enter your post'}
-                          value={newPostMessage}
-                          onChange={onChangeTextareaHandler}>''</textarea>
-
-                <button className={style.button} onClick={addPostHandler}>
-                    Add post
-                </button>
+                <AddNewPostReduxForm onSubmit={onSubmit}/>
 
             </div>
 
@@ -57,3 +46,5 @@ export const Posts = (props: PropsType) => {
         </div>
     )
 };
+
+

@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {AddPostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
-import {AddNewMessageACType, dialogsReducer} from '../reducers/dialogsReducer/dialogsReducer';
+import {SendMessageACType, dialogsReducer} from '../reducers/dialogsReducer/dialogsReducer';
 import {
     profileReducer,
     SetUserProfileACType,
@@ -22,7 +22,7 @@ import {reducer as formReducer} from 'redux-form';
 
 export type ActionsType =
     AddPostACType |
-    AddNewMessageACType |
+    SendMessageACType |
     FollowUserACType |
     UnfollowUserACType |
     SetUsersACType |
@@ -60,7 +60,7 @@ export type MessageType = {
 }
 export type PostType = {
     userId: string
-    postText: string
+    newPostText: string
     likesCount: number
 }
 export type ProfileType = {
@@ -96,7 +96,7 @@ export type ProfilePageType = {
 
 }
 export type PostsPageType = {
-    newPostText: string
+    newPostText?: string
     posts: Array<PostType>
 }
 export type DialogsPageType = {

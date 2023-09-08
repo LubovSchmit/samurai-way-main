@@ -2,14 +2,13 @@ import {v1} from 'uuid';
 import {ActionsType, DialogsPageType, MessageType} from '../../reduxStore/reduxStore';
 
 
-export type AddNewMessageACType = {
-    type: 'ADD-NEW-MESSAGE',
-    dialogMessage: string
+export type SendMessageACType = {
+    type: 'SEND-MESSAGE',
+    newMessage: string
 }
 
 
 let initialState = {
-    newMessage: '',
     dialogNames: [
         {id: v1(), name: 'Luba'},
         {id: v1(), name: 'Leon'},
@@ -27,21 +26,24 @@ let initialState = {
 }
 
 
-export const addMessageAC = (newDialogMessage: string): AddNewMessageACType => {
-    return {type: 'ADD-NEW-MESSAGE', dialogMessage: newDialogMessage}
+export const addMessageAC = (newMessageBody: string): SendMessageACType => {
+    return {type: 'SEND-MESSAGE', newMessage: newMessageBody}
 }
 
 
 export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType): DialogsPageType => {
     switch (action.type) {
 
-        case 'ADD-NEW-MESSAGE': {
-            let newDialogMessage: MessageType = {
+        case 'SEND-MESSAGE': {
+            let newMessageBody: MessageType = {
                 id: v1(),
-                message: action.dialogMessage
+                message: action.newMessage
             }
 
-            return {...state, newMessage: '', messages: [newDialogMessage, ...state.messages]}
+            return {
+                ...state,
+                messages: [newMessageBody, ...state.messages]
+            }
         }
 
         default:

@@ -2,7 +2,7 @@ import style from './AvaPersonalData.module.scss';
 import React from 'react';
 import {Ava} from './ava/Ava';
 import {PersonalData} from './personalData/PersonalData';
-import {PhotosType, ProfileType} from '../../../../../redux/reduxStore/reduxStore';
+import {ProfileType} from '../../../../../redux/reduxStore/reduxStore';
 import ProfileStatus from './profileStatus/ProfileStatus';
 
 type PropsType = {
@@ -22,6 +22,7 @@ export const AvaPersonalData = (props: PropsType) => {
                     <Ava photo={props.profile.photos.small}
                          id={props.profile.userId}/>
                 </div>
+
 
                 <div className={style.statusBlock}>
                     Status

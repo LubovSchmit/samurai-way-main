@@ -1,9 +1,10 @@
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import style from './Dialogs.module.scss';
 import {DialogsItems} from './dialogs-items/DialogsItems';
 import {Messages} from './messages/Messages';
 import {DialogNameType, MessageType} from '../../../../redux/reduxStore/reduxStore';
-import {Redirect} from 'react-router-dom';
+import {AddMessageReduxForm} from './AddNewPostReduxForm';
+
 
 
 type PropsType = {
@@ -14,18 +15,12 @@ type PropsType = {
 }
 
 export const Dialogs = (props: PropsType) => {
-    let [newMessage, setNewMessage] = useState<string>('')
+    const onSubmit = (formData: any) => {
+        if (formData.newMessageBody.trim() === '') return
+        props.sendMessage(formData.newMessageBody)
 
-    const onChangeTextareaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setNewMessage(e.currentTarget.value)
+
     }
-
-    const onSendMessageClick = () => {
-        if (newMessage.trim() === '') return
-        props.sendMessage(newMessage)
-        setNewMessage('')
-    }
-
 
 
     return (
@@ -38,21 +33,11 @@ export const Dialogs = (props: PropsType) => {
                 <Messages messages={props.messages}/>
             </div>
             <div className={style.nexMessageTextareaBlock}>
-                <div>
-                    <textarea className={style.textarea}
-                              placeholder={'Enter your message'}
-                              value={newMessage}
-                              onChange={onChangeTextareaHandler}
-                    >''</textarea>
-                </div>
+                <AddMessageReduxForm onSubmit={onSubmit}/>
 
-                <div>
-                    <button onClick={onSendMessageClick}>
-                        Send message
-                    </button>
-                </div>
             </div>
 
         </div>
     )
 };
+

@@ -9,13 +9,13 @@ import {WithAuthRedirect} from '../../../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 
 type MapDispatchToPropsType = {
-    addPost: (newPostMessage: string) => void
+    addPost: (newPostText: string) => void
     toggleIsFetching: (isFetching: boolean) => void
 }
 type MapStateToPropsType = {
     userId: string
     posts: Array<PostType>
-    postText: string
+    newPostText: string | undefined
     photo: string | null
     isFetching: boolean
 }
@@ -25,7 +25,7 @@ const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
     return {
         userId: state.profilePage.profile.userId,
         posts: state.postsPage.posts,
-        postText: state.postsPage.newPostText,
+        newPostText: state.postsPage.newPostText,
         photo: state.profilePage.profile.photos.small,
         isFetching: state.usersPage.isFetching,
     }
@@ -33,14 +33,6 @@ const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
 
 
 class PostsContainer extends React.Component<PropsType> {
-/*    componentDidMount() {
-        this.props.toggleIsFetching(true)
-        profileAPI.getProfile(this.props.userId)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.addPost(data)
-            })
-    }*/
 
     render() {
         return <>
@@ -48,7 +40,7 @@ class PostsContainer extends React.Component<PropsType> {
             <Posts {...this.props}
                    userId={this.props.userId}
                    posts={this.props.posts}
-                   postText={this.props.postText}
+                   newPostText={this.props.newPostText}
                    photo={this.props.photo}
                    addPost={this.props.addPost}
             />

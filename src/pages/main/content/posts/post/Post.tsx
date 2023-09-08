@@ -5,7 +5,7 @@ import {Ava} from '../../profile/avaPersonalData/ava/Ava';
 
 type PropsType = {
     id: string
-    postText: string
+    newPostText: string | undefined
     likesCount: number
     photo: string | null
 }
@@ -27,7 +27,7 @@ export const Post = (props: PropsType) => {
             </div>
 
             <div className={style.text} >
-                {props.postText}
+                {props.newPostText}
             </div>
 
             <div className={style.likesContainer}>

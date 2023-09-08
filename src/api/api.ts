@@ -38,10 +38,7 @@ export const profileAPI = {
         return instance.put(`profile/status/`, {status})
             .then(response => response.data)
     },
-    uploadPhoto(image: PhotosType) {
-        return instance.put(`profile/photo/`, {image})
-            .then(response => response.data)
-    }
+
 }
 
 export const authAPI = {
