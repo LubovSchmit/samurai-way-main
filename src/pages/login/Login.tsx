@@ -1,34 +1,36 @@
 import React from 'react';
 import style from './Login.module.scss';
-import {reduxForm} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 
 type PropsLoginType = {}
-type PropsLoginFormType = {}
+
 
 export const Login = (props: PropsLoginType) => {
+    const onSubmit = (formData: any) => {
+        console.log(formData)
+    }
     return (
         <div className={style.loginContainer}>
             <h1> Login </h1>
-            <LoginReduxForm/>
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     );
 };
 
 
-
-const LoginForm = (props: PropsLoginFormType) => {
+const LoginForm = (props: any) => {
     return (
-        <form>
+        <form onSubmit={props.handleSubmit}>
             <div>
-                <input type="text" placeholder={'Login'}/>
+                <Field name={'login'} component={'input'} placeholder={'Login'}/>
             </div>
 
             <div>
-                <input type="text" placeholder={'Password'}/>
+                <Field name={'password'} component={'input'} placeholder={'Password'}/>
             </div>
 
             <div>
-                <input type="checkbox"/> Remember me
+                <Field name={'rememberMe'} component={'input'} type="checkbox"/> Remember me
             </div>
 
             <div>
