@@ -3,10 +3,11 @@
 
 .PersonalContainer {
   margin-top: 10px;
-  background-color: darkgoldenrod;
+  background-color: darkgrey;
   height: 100%;
   width: 100%;
   @include flex(column, space-between, center, wrap);
+  color: black;
 
   .avaStatusBlock {
     @include flex(row, space-between, center, wrap);
@@ -23,8 +24,8 @@
     .statusBlock:nth-of-type(3) {
       flex: 3;
       width: 100%;
-      border: 1px solid blue;
-      background-color: orange;
+
+      background-color: darkgrey;
       margin: 10px;
 
     }
@@ -35,8 +36,8 @@
   .personalDataBlock:nth-of-type(2) {
     flex: 2;
   /*  width: 100%;*/
-    border: 1px solid blue;
-    background-color: orange;
+
+    background-color: darkgrey;
     margin: 10px;
 
   }

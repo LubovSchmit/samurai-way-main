@@ -4,7 +4,7 @@
 
 .avaContainer {
   @include flex(column, space-around, center, wrap);
-  background-color: red;
+  /*background-color: red;*/
   width: 100%;
 
   .photo {

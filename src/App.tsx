@@ -7,11 +7,7 @@ import {HeaderContainer} from './pages/header/HeaderContainer';
 import {Login} from './pages/login/Login';
 
 
-/*type PropsType = {
-    /!*state: StatePropsType,
-    dispatch: (action: ActionsType) => void*!/
 
-}*/
 
 
 function App() {

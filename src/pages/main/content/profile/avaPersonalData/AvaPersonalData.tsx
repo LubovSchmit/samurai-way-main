@@ -18,14 +18,14 @@ export const AvaPersonalData = (props: PropsType) => {
 
             <div className={style.avaStatusBlock}>
                 <div className={style.avaBlock}>
-                    Photo
+
                     <Ava photo={props.profile.photos.small}
                          id={props.profile.userId}/>
                 </div>
 
 
                 <div className={style.statusBlock}>
-                    Status
+
                     <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>

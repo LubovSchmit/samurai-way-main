@@ -1,8 +1,9 @@
 @import '../../../commun/styles/sass/mixins';
 
 .contentBlock {
-  background-color: darkgoldenrod;
+  background-color: darkgrey;
   @include flex(column, space-around, center, wrap);
   width: 100%;
   height: 100%;
+
 }

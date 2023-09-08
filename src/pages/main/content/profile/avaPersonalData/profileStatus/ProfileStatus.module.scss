@@ -3,22 +3,21 @@
 
 
 .statusContainer {
-  border: 1px red solid;
-  background-color: palevioletred;
+
+  background-color: darkgrey;
 
 
   .statusBlock {
-    color: darkslategrey;
+    color: black;
   }
 
   .inputAndButtonBlock {
     @include flex(row, space-between, center, wrap);
+
     .inputStatusBlock {
       font-size: medium;
       color: darkslategrey;
     }
   }
-
-
 
 }
