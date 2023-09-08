@@ -4,14 +4,14 @@ import style from './Posts.module.scss';
 import {maxLengthCreator, required} from '../../../../utils/validators/validators';
 import {Textarea} from '../../../../commun/formsControls/FormsControls';
 
-const maxLength10 = maxLengthCreator(10)
+const maxLength100 = maxLengthCreator(100)
 const AddNewPostForm = (props: any) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <Field name={'newPostText'}
                    component={Textarea}
                    placeholder={'Enter your post'}
-                   validate={[required, maxLength10]}
+                   validate={[required, maxLength100]}
             />
 
             <button className={style.button} >
