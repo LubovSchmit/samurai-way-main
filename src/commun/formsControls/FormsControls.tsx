@@ -21,3 +21,21 @@ export const Textarea = ({input, meta, ...props}: any) => {
     );
 };
 
+export const Input = ({input, meta, ...props}: any) => {
+
+    const hasError = meta.touched && meta.error
+
+    return (
+        <div className={hasError && style.error}>
+
+            <div>
+                <input  {...input}{...props}/>
+            </div>
+
+            <div>
+                { hasError && <span>{meta.error}</span>}
+            </div>
+
+        </div>
+    );
+};
