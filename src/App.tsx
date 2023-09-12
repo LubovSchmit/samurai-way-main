@@ -4,7 +4,8 @@ import {Main} from './pages/main/Main';
 import {Footer} from './pages/footer/Footer';
 import {Route} from 'react-router-dom';
 import {HeaderContainer} from './pages/header/HeaderContainer';
-import {Login} from './pages/login/Login';
+import Login from './pages/login/Login';
+
 
 
 

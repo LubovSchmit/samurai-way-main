@@ -17,29 +17,14 @@ import {
     usersReducer
 } from '../reducers/usersReducer/usersReducer';
 import {authReducer, AuthUserACType} from '../reducers/authReducer/authReducer';
-import thunkMiddleware from 'redux-thunk';
+import thunkMiddleware, {ThunkAction} from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
-
-export type ActionsType =
-    AddPostACType |
-    SendMessageACType |
-    FollowUserACType |
-    UnfollowUserACType |
-    SetUsersACType |
-    SetCurrentPageACType |
-    SetTotalUsersCountACType |
-    ToggleIsFetchingACType |
-    SetUserProfileACType |
-    SetUserStatusACType |
-    AuthUserACType |
-    ToggleInProgressACType
 
 
 export type PhotosType = {
     small: string | null,
     large: string | null
 }
-
 export type UserType = {
     id: string
     name: string
@@ -118,17 +103,28 @@ export type AuthType = {
 }
 
 
-/*export type StatePropsType = {
-    profilePage: ProfilePageType
-    postsPage: PostsPageType
-    dialogsPage: DialogsPageType
-    usersPage: UsersPageType
-    auth: AuthType
-}*/
+export type ActionsType =
+    AddPostACType |
+    SendMessageACType |
+    FollowUserACType |
+    UnfollowUserACType |
+    SetUsersACType |
+    SetCurrentPageACType |
+    SetTotalUsersCountACType |
+    ToggleIsFetchingACType |
+    SetUserProfileACType |
+    SetUserStatusACType |
+    AuthUserACType |
+    ToggleInProgressACType
+
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, StatePropsType, unknown, ActionsType>
+
 export type DispatchType = (action: ActionsType, anyArgument?: any) => void
 
-type ReducersType = typeof rootReducer
-export type StatePropsType = ReturnType<ReducersType>
+/*export type TDispatch = ThunkDispatch<AppRootStateType, void, AnyAction>;
+const dispatch: TDispatch  = useDispatch( );   // вот этот dispatch*/
+
+export type StatePropsType = ReturnType<typeof rootReducer>
 
 
 let rootReducer = combineReducers({
