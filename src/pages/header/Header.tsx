@@ -8,7 +8,7 @@ type PropsType = {
     login: string | null
     email: string | null
     userId: number | null
-
+    logout: () => void
 
 }
 
@@ -17,9 +17,13 @@ export const Header = (props: PropsType) => {
     return (
         <div id="header" className={style.header}>
 
-            <div>{props.isAuth ? props.login  : <NavLink to={'/login'} className={style.loginBlock}>Login</NavLink>} </div>
-            <div>{props.isAuth ? props.email  : null} </div>
-            <div>id:{props.isAuth ? props.userId  : null} </div>
+            <div>{props.isAuth
+                ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
+                : <NavLink to={'/login'} className={style.loginBlock}>Login</NavLink>} </div>
+
+            <div>{props.isAuth ? props.email : null} </div>
+
+            <div>{props.isAuth ? props.userId : null} </div>
 
         </div>
 
