@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {follow, getUsers, setCurrentPage, unfollow} from '../../../../redux/reducers/usersReducer/usersReducer';
 import {Users} from './usersAPI/users/Users';
 import {Preloader} from '../../../../commun/preloader/Preloader';
-import {WithAuthRedirect} from '../../../../hoc/WithAuthRedirect';
 import {compose} from 'redux';
 
 
@@ -61,7 +60,7 @@ export default compose<React.ComponentType>(
         unfollow,
         getUsers,
     }),
-    WithAuthRedirect,
+
 )(UsersContainer)
 
 

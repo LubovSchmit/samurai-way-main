@@ -1,25 +1,21 @@
 import React from 'react';
-import {StatePropsType, UserDataType} from '../../redux/reduxStore/reduxStore';
+import {StatePropsType} from '../../redux/reduxStore/reduxStore';
 import {connect} from 'react-redux';
 import {Header} from './Header';
-import {authMe, AuthUserACType, logout, setAuthUserData} from '../../redux/reducers/authReducer/authReducer';
-
+import {logout} from '../../redux/reducers/authReducer/authReducer';
 
 
 type MapDispatchToPropsType = {
-    authMe: ()=> void
-    logout: ()=> void
+     logout: () => void
 }
 
 type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
 
 export class AuthAPI extends React.Component<PropsType> {
-    componentDidMount() {
-        this.props.authMe()
-    }
-
-
+    /*   componentDidMount() {
+           this.props.authMe()
+       }*/
     render() {
         return <>
             <Header login={this.props.login}
@@ -42,10 +38,6 @@ const mapStateToProps = (state: StatePropsType) => {
     }
 }
 
-export const HeaderContainer = connect(mapStateToProps,
-    {
-        authMe,
-        logout
-    })(AuthAPI)
+export const HeaderContainer = connect(mapStateToProps, {logout})(AuthAPI)
 
 

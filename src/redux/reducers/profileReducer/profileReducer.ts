@@ -1,5 +1,4 @@
-import {ActionsType, DispatchType, PhotosType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
-import myPhoto from '../../../assets/images/ava.jpg'
+import {ActionsType, DispatchType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
 import {profileAPI} from '../../../api/api';
 
 export type SetUserProfileACType = {
@@ -15,18 +14,18 @@ export type SetUserStatusACType = {
 
 let initialState: ProfilePageType = {
     profile: {
-        userId: '17358',
+        userId: '',
         lookingForAJob: false,
         lookingForAJobDescription: null,
-        fullName: 'Luba',
+        fullName: '',
         contacts: {
-            github: 'github.com',
-            vk: 'vk.com',
-            facebook: 'facebook.com',
-            instagram: 'instagram.com',
-            twitter: 'twitter.com',
+            github: '',
+            vk: '',
+            facebook: '',
+            instagram: '',
+            twitter: '',
             website: null,
-            youtube: 'youtube.com',
+            youtube: '',
             mainLink: null,
         },
         photos: {

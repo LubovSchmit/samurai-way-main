@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './LoginReduxForm.module.scss';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form'
 import {maxLengthCreator, required} from '../../utils/validators/validators';
 import {Input} from '../../commun/formsControls/FormsControls';
@@ -36,6 +37,11 @@ const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props: any) => {
                        component={Input}
                        type="checkbox"/> Remember me
             </div>
+
+            {props.error &&
+            <div className={style.formSummaryError}>
+                {props.error}
+            </div>}
 
             <div>
                 <button>Log in</button>
