@@ -8,7 +8,7 @@ import {
     updateStatus
 } from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
-import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
 type MapStateToPropsType = ProfilePageType & {

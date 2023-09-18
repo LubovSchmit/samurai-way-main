@@ -5,6 +5,12 @@ import {follow, getUsers, setCurrentPage, unfollow} from '../../../../redux/redu
 import {Users} from './usersAPI/users/Users';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import {compose} from 'redux';
+import {
+    getCurrentPageSelector, getInProgressSelector, getIsFetchingSelector,
+    getPageSizeSelector,
+    getTotalCountSelector,
+    getUsersSelector
+} from '../../../../redux/selectors/usersSelectors/usersSelectors';
 
 
 type MapDispatchToPropsType = {
@@ -15,7 +21,7 @@ type MapDispatchToPropsType = {
 }
 type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
-const mapStateToProps = (state: StatePropsType): UsersPageType => {
+/*const mapStateToProps = (state: StatePropsType): UsersPageType => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -24,8 +30,18 @@ const mapStateToProps = (state: StatePropsType): UsersPageType => {
         isFetching: state.usersPage.isFetching,
         inProgress: state.usersPage.inProgress
     }
-}
+}*/
+const mapStateToProps = (state: StatePropsType): UsersPageType => {
 
+    return {
+        users: getUsersSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalCount: getTotalCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        inProgress: getInProgressSelector(state)
+    }
+}
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)

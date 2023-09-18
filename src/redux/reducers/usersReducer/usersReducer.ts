@@ -119,11 +119,12 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
 
 
 
- export const getUsers = (currentPage: number, pageSize: number)=> {
+ export const getUsers = (page: number, pageSize: number)=> {
     return (dispatch: DispatchType)=> {
          dispatch(toggleIsFetching(true))
+         dispatch(setCurrentPage(page))
 
-         usersAPI.getUsers(currentPage,pageSize)
+         usersAPI.getUsers(page,pageSize)
              .then(data => {
                  dispatch(toggleIsFetching(false))
                  dispatch(setUsers(data.items));
