@@ -26,6 +26,7 @@ export const authAPI = {
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
+        console.log(currentPage)
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     }

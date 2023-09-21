@@ -1,33 +1,30 @@
 import React from 'react';
-import {ProfilePageType, ProfileType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
+import {ProfilePageType, StatePropsType} from '../../../../redux/reduxStore/reduxStore';
 import {Profile} from './Profile';
 import {
     getProfile,
     getStatus,
-    setUserProfile,
     updateStatus
 } from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
+
 type MapStateToPropsType = ProfilePageType & {
     id: number | null,
     isAuth: boolean
 }
 type MapDispatchToPropsType = {
-    setUserProfile: (profile: ProfileType) => void
     getProfile: (userId: string) => void
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
-
 }
 type PathParamsType = {
     userId: string
 }
 
 type PropsType = MapStateToPropsType & MapDispatchToPropsType & RouteComponentProps<PathParamsType>
-
 
 const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
     return {
@@ -44,15 +41,15 @@ class ProfileContainer extends React.Component<PropsType> {
         if (userId) {
             this.props.getProfile(userId)
             this.props.getStatus(userId)
-            if (!userId && this.props.id) {
-                userId = String(this.props.id)
-                if (!userId && !this.props.id) {
-                    this.props.history.push('/login')
-                }
-            }
         }
-
-
+        if (!userId && this.props.id) {
+            userId = String(this.props.id)
+            this.props.getProfile(userId)
+            this.props.getStatus(userId)
+        }
+        if (!userId && !this.props.id) {
+            this.props.history.push('/login')
+        }
     }
 
     componentDidMount() {
@@ -81,7 +78,6 @@ export default compose<React.ComponentType>(
         getProfile,
         getStatus,
         updateStatus,
-        setUserProfile,
     }),
     withRouter,
 )(ProfileContainer)

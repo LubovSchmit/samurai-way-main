@@ -9,7 +9,7 @@ import {
     getCurrentPageSelector, getInProgressSelector, getIsFetchingSelector,
     getPageSizeSelector,
     getTotalCountSelector,
-    getUsersSelector
+    getUsersSuperSelector
 } from '../../../../redux/selectors/usersSelectors/usersSelectors';
 
 
@@ -34,7 +34,7 @@ type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 const mapStateToProps = (state: StatePropsType): UsersPageType => {
 
     return {
-        users: getUsersSelector(state),
+        users: getUsersSuperSelector(state),
         pageSize: getPageSizeSelector(state),
         totalCount: getTotalCountSelector(state),
         currentPage: getCurrentPageSelector(state),
@@ -47,7 +47,7 @@ class UsersContainer extends React.Component<PropsType> {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
     onClickPageChange(currentPage: number) {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        this.props.getUsers(currentPage, this.props.pageSize)
         this.props.setCurrentPage(currentPage);
     }
 

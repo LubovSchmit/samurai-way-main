@@ -21,7 +21,8 @@ export const Posts = (props: PropsType) => {
         props.addPost(formData.newPostText)
     }
 
-    let postsElements = props.posts
+    let postsElements = [...props.posts]
+        .reverse()
         .map(p => <Post key={p.userId} id={p.userId}
                         newPostText={p.newPostText}
                         likesCount={p.likesCount}

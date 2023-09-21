@@ -17,7 +17,7 @@ let initialState: ProfilePageType = {
         userId: '',
         lookingForAJob: false,
         lookingForAJobDescription: null,
-        fullName: '',
+        fullName: 'Luba',
         contacts: {
             github: '',
             vk: '',
@@ -33,7 +33,7 @@ let initialState: ProfilePageType = {
             large: null
         }
     },
-    status: '',
+    status: 'There are no status',
 
 }
 

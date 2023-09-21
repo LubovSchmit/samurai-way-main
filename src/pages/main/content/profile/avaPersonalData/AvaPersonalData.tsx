@@ -12,7 +12,7 @@ type PropsType = {
 
 }
 
-export const AvaPersonalData = (props: PropsType) => {
+export const AvaPersonalData = React.memo((props: PropsType) => {
     return (
         <div className={style.PersonalContainer}>
 
@@ -37,4 +37,4 @@ export const AvaPersonalData = (props: PropsType) => {
 
         </div>
     )
-}
+})
