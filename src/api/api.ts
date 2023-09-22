@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {PhotosType} from '../redux/reduxStore/reduxStore';
+
 
 
 const instance = axios.create({
@@ -23,7 +23,6 @@ export const authAPI = {
             .then(response => response.data)
     },
 }
-
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         console.log(currentPage)
