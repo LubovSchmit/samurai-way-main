@@ -56,6 +56,15 @@ export const toggleInProgress = (isFetching: boolean, userId: string): ToggleInP
     return {type: 'TOGGLE-IN-PROGRESS', isFetching, userId}
 }
 
+/*export const updateObjectInArray = (items: any, itemId: string, objPropName: any, newObjProps: any) => {
+    return items.map(u => {
+        if (u[objPropName] === itemId) {
+            return {...u, ...newObjProps}
+        }
+        return u
+    })
+}*/
+
 
 //INITIAL STATE
 let initialState: UsersPageType = {
