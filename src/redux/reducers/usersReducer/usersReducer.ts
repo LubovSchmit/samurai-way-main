@@ -71,7 +71,6 @@ let initialState: UsersPageType = {
 //REDUCER
 export const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
     switch (action.type) {
-
         case 'FOLLOW-USER': {
             if (action.userId)
                 return {
@@ -132,19 +131,20 @@ export const getUsers = (page: number, pageSize: number) => async (dispatch: Dis
     dispatch(setUsers(data.items));
     dispatch(setTotalUsersCount(data.totalCount));
 }
-export const follow = (userId: string) => async (dispatch: DispatchType) => {
+
+export const followUnfollowFlow = async (dispatch: DispatchType, userId: string, apiMethod: any, actionCreator: (userId: string) => FollowUserACType | UnfollowUserACType) => {
     dispatch(toggleInProgress(true, userId))
-    let data = await followAPI.postFollow(userId)
+    let data = await apiMethod(userId)
     if (data.resultCode == 0) {
-        dispatch(followUser(userId))
+        dispatch(actionCreator(userId))
     }
     dispatch(toggleInProgress(false, userId))
 }
+
+export const follow = (userId: string) => async (dispatch: DispatchType) => {
+    followUnfollowFlow(dispatch, userId, followAPI.postFollow.bind(usersAPI), followUser)
+}
+
 export const unfollow = (userId: string) => async (dispatch: DispatchType) => {
-    dispatch(toggleInProgress(true, userId))
-    let data = await followAPI.deleteFollow(userId)
-    if (data.resultCode == 0) {
-        dispatch(unfollowUser(userId))
-    }
-    dispatch(toggleInProgress(false, userId))
+    followUnfollowFlow(dispatch, userId, followAPI.deleteFollow.bind(usersAPI), unfollowUser)
 }
