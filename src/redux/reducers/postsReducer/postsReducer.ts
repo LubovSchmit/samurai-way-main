@@ -6,6 +6,10 @@ export type AddPostACType = {
     type: 'ADD-POST',
     newPostText: string
 }
+export type DeletePostACType = {
+    type: 'DELETE-POST',
+    userId: string
+}
 
 let initialState: PostsPageType = {
     posts: [
@@ -34,6 +38,9 @@ let initialState: PostsPageType = {
 export const addPost = (newPostText: string): AddPostACType => {
     return {type: 'ADD-POST', newPostText}
 }
+export const deletePost = (userId: string): DeletePostACType => {
+    return {type: 'DELETE-POST', userId}
+}
 
 
 export const postsReducer = (state: PostsPageType = initialState, action: ActionsType): PostsPageType => {
@@ -46,6 +53,11 @@ export const postsReducer = (state: PostsPageType = initialState, action: Action
             }
 
             return {...state, posts: [newPost, ...state.posts]}
+        }
+
+
+        case 'DELETE-POST': {
+            return {...state, posts: state.posts.filter(p => p.userId!= action.userId)}
         }
 
 

@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {AddPostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
+import {AddPostACType, DeletePostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {dialogsReducer, SendMessageACType} from '../reducers/dialogsReducer/dialogsReducer';
 import {profileReducer, SetUserProfileACType, SetUserStatusACType,} from '../reducers/profileReducer/profileReducer';
 import {
@@ -61,7 +61,6 @@ export type ProfileType = {
         mainLink: string | null,
     },
     photos: PhotosType
-
 }
 export type UserDataType = {
     id: number | null
@@ -106,6 +105,7 @@ export type AppAuthType = {
 export type ActionsType =
     AppAuthACType|
     AddPostACType |
+    DeletePostACType|
     SendMessageACType |
     FollowUserACType |
     UnfollowUserACType |
