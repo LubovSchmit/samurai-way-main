@@ -21,16 +21,6 @@ type MapDispatchToPropsType = {
 }
 type PropsType = ReturnType<typeof mapStateToProps> & MapDispatchToPropsType
 
-/*const mapStateToProps = (state: StatePropsType): UsersPageType => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalCount: state.usersPage.totalCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        inProgress: state.usersPage.inProgress
-    }
-}*/
 const mapStateToProps = (state: StatePropsType): UsersPageType => {
 
     return {

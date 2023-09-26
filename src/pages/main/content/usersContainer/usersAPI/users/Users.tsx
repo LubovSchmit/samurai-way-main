@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Users.module.scss'
 import {UserType} from '../../../../../../redux/reduxStore/reduxStore';
 import {User} from './user/User';
+import {Paginator} from '../../../../../../commun/pagination/Paginator';
 
 
 type PropsType = {
@@ -27,17 +28,11 @@ export const Users = (props: PropsType) => {
 
     return <div className={style.usersContainer}>
 
-        <div className={style.pageNumberContainer}>
-            {pages.map(p => {
-                return <span key={p}
-                             className={props.currentPage === p ? style.selectedPage : style.nonSelectedPage}
-                             onClick={(e) => {
-                                 props.onClickPageChange(p)
-                             }}>
-                            {p}
-                        </span>
-            })}
-        </div>
+        <Paginator pageSize={props.pageSize}
+                   totalCount={props.totalCount}
+                   currentPage={props.currentPage}
+                   onClickPageChange={props.onClickPageChange}
+        />
 
 
         {props.users.map(u =>
