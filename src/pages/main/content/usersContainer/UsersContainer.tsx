@@ -34,10 +34,12 @@ const mapStateToProps = (state: StatePropsType): UsersPageType => {
 }
 class UsersContainer extends React.Component<PropsType> {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize} = this.props
+        this.props.getUsers(currentPage, pageSize)
     }
     onClickPageChange(currentPage: number) {
-        this.props.getUsers(currentPage, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.getUsers(currentPage, pageSize)
         this.props.setCurrentPage(currentPage);
     }
 

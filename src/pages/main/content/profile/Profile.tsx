@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
-import {PhotosType, ProfileType} from '../../../../redux/reduxStore/reduxStore';
+import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
 import {Route} from 'react-router-dom';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 import PostsContainer from '../posts/PostsContainer';

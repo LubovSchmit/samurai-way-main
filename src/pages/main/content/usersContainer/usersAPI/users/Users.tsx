@@ -32,6 +32,7 @@ export const Users = (props: PropsType) => {
                    totalCount={props.totalCount}
                    currentPage={props.currentPage}
                    onClickPageChange={props.onClickPageChange}
+                   portionSize= {10}
         />
 
 

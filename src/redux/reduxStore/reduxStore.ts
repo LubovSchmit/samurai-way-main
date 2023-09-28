@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {AddPostACType, DeletePostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {dialogsReducer, SendMessageACType} from '../reducers/dialogsReducer/dialogsReducer';
 import {profileReducer, SetUserProfileACType, SetUserStatusACType,} from '../reducers/profileReducer/profileReducer';
@@ -14,7 +14,7 @@ import {
 } from '../reducers/usersReducer/usersReducer';
 import {authReducer, AuthUserACType} from '../reducers/authReducer/authReducer';
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk';
-import {reducer as formReducer} from 'redux-form';
+import reducer, {reducer as formReducer} from 'redux-form';
 import {AppAuthACType, appReducer} from '../reducers/appReducer/appReducer';
 
 
@@ -135,7 +135,12 @@ let rootReducer = combineReducers({
     form: formReducer,
 })
 
-export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
-
 // @ts-ignore
-window.store = store
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware) ));
+
+
+
+//export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+// @ts-ignore
+window._store_ = store
