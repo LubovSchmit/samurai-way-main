@@ -5,12 +5,9 @@ import {Content} from './content/Content';
 import {ButtonNav} from './nav/buttonNav/ButtonNav';
 
 
-type PropsType = {
-    /*state: StatePropsType,
-    dispatch: (action: ActionsType) => void*/
-}
 
-export const Main = (props: PropsType) => {
+
+export const Main = () => {
     return (
 
         <div id="main" className={style.mainBlock}>

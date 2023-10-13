@@ -144,3 +144,5 @@ export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(t
 //export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 // @ts-ignore
 window._store_ = store
+
+

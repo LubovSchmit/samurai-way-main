@@ -7,7 +7,7 @@ type PropsType = {
     updateStatus: (status: string) => void
 }
 
-/*class ProfileStatus extends React.Component<PropsType> {
+class ProfileStatus extends React.Component<PropsType> {
     state = {
         editMode: false,
         status: this.props.status
@@ -54,10 +54,10 @@ type PropsType = {
             </div>
         );
     };
-}*/
+}
 
 
-const ProfileStatus = (props: PropsType) => {
+/*const ProfileStatus = (props: PropsType) => {
 
     let [editMode, setEditMode] = useState<boolean>(false)
     let [status, setStatus] = useState<string>(props.status)
@@ -95,6 +95,6 @@ const ProfileStatus = (props: PropsType) => {
         </div>}
 
     </div>
-}
+}*/
 
 export default ProfileStatus;
