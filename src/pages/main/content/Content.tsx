@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import style from './Content.module.scss';
 import {Route} from 'react-router-dom';
 import ProfileContainer from './profile/ProfileContainer';
-import DialogsContainer from './dialogs/DialogsContainer';
-import UsersContainer from './usersContainer/UsersContainer';
-import PostsContainer from './posts/PostsContainer';
-import Settings from './settings/Settings';
+const DialogsContainer = lazy(() => import('./dialogs/DialogsContainer'));
+const UsersContainer = lazy(() => import('./usersContainer/UsersContainer'));
+const PostsContainer = lazy(() => import('./posts/PostsContainer'));
+const Settings = lazy(() => import('./settings/Settings'));
+
+
 
 
 
