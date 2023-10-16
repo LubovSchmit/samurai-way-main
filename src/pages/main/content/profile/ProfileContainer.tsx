@@ -3,7 +3,7 @@ import {ProfilePageType, StatePropsType} from '../../../../redux/reduxStore/redu
 import {Profile} from './Profile';
 import {
     getProfile,
-    getStatus,
+    getStatus, savePhoto,
     updateStatus
 } from '../../../../redux/reducers/profileReducer/profileReducer';
 import {connect} from 'react-redux';
@@ -19,6 +19,7 @@ type MapDispatchToPropsType = {
     getProfile: (userId: string) => void
     getStatus: (userId: string) => void
     updateStatus: (status: string) => void
+    savePhoto: (file: File) => void
 }
 type PathParamsType = {
     userId: string
@@ -36,6 +37,10 @@ const mapStateToProps = (state: StatePropsType): MapStateToPropsType => {
 }
 
 class ProfileContainer extends React.Component<PropsType> {
+    componentDidMount() {
+        this.getUserInfo()
+    }
+
     getUserInfo() {
         let userId = this.props.match.params.userId
         if (userId) {
@@ -52,10 +57,6 @@ class ProfileContainer extends React.Component<PropsType> {
         }
     }
 
-    componentDidMount() {
-        this.getUserInfo()
-    }
-
     componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>) {
         if (prevProps.id !== this.props.id || prevProps.location.pathname !== this.props.location.pathname) {
             this.getUserInfo()
@@ -64,9 +65,11 @@ class ProfileContainer extends React.Component<PropsType> {
 
     render() {
         return <>
-            <Profile profile={this.props.profile}
+            <Profile isOwner={!this.props.match.params.userId}
+                     profile={this.props.profile}
                      status={this.props.status}
                      updateStatus={this.props.updateStatus}
+                     savePhoto={this.props.savePhoto}
             />
         </>
     }
@@ -78,6 +81,7 @@ export default compose<React.ComponentType>(
         getProfile,
         getStatus,
         updateStatus,
+        savePhoto
     }),
     withRouter,
 )(ProfileContainer)

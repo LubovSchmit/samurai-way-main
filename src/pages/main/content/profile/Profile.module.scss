@@ -10,7 +10,7 @@
   @include flex(column, space-between, center, wrap);
 
   .coverBlock {
-    flex: 1;
+   /* flex: 1;*/
     background-image: url('../../../../assets/images/cover1.jpg');
     background-size: cover;
     background-position: center;
@@ -19,14 +19,10 @@
   }
 
   .personalInfo:nth-of-type(2) {
-    flex: 4;
+ /*   flex: 4;*/
     width: 100%;
 
   }
 
-  .friendsContainer {
-    height: 100%;
-    width: 100%;
 
-  }
 }

@@ -3,11 +3,14 @@
 
 
 .avaContainer {
-  @include flex(column, space-around, center, wrap);
+  @include flex(row, space-around, center, wrap);
   /*background-color: red;*/
-  width: 100%;
+  width: 200%;
 
   .photo {
+    width: 100%;
+  }
+  .input{
     width: 100%;
   }
 }

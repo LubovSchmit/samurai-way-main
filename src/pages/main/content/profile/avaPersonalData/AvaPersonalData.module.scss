@@ -10,7 +10,7 @@
   color: black;
 
   .avaStatusBlock {
-    @include flex(row, space-between, center, wrap);
+    @include flex(column, space-between, center, wrap);
     .avaBlock {
       flex: 1;
       /*   background-image: url('./../../../../../assets/images/ava.jpg');

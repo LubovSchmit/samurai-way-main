@@ -8,7 +8,9 @@ import ProfileStatus from './profileStatus/ProfileStatus';
 type PropsType = {
     profile: ProfileType
     status: string
-    updateStatus: (status: string)=> void
+    updateStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file: File) => void
 
 }
 
@@ -19,14 +21,18 @@ export const AvaPersonalData = React.memo((props: PropsType) => {
             <div className={style.avaStatusBlock}>
                 <div className={style.avaBlock}>
 
-                    <Ava photo={props.profile.photos.small}
-                         id={props.profile.userId}/>
+                    <Ava id={props.profile.userId}
+                         isOwner={props.isOwner}
+                         photo={props.profile.photos.small}
+                         savePhoto={props.savePhoto}
+                    />
                 </div>
 
 
                 <div className={style.statusBlock}>
 
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatus status={props.status}
+                                   updateStatus={props.updateStatus}/>
                 </div>
             </div>
 

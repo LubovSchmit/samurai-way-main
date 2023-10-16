@@ -1,7 +1,12 @@
 import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
 import {AddPostACType, DeletePostACType, postsReducer} from '../reducers/postsReducer/postsReducer';
 import {dialogsReducer, SendMessageACType} from '../reducers/dialogsReducer/dialogsReducer';
-import {profileReducer, SetUserProfileACType, SetUserStatusACType,} from '../reducers/profileReducer/profileReducer';
+import {
+    profileReducer,
+    SavePhotoSuccessACType,
+    SetUserProfileACType,
+    SetUserStatusACType,
+} from '../reducers/profileReducer/profileReducer';
 import {
     FollowUserACType,
     SetCurrentPageACType,
@@ -116,7 +121,8 @@ export type ActionsType =
     SetUserProfileACType |
     SetUserStatusACType |
     AuthUserACType |
-    ToggleInProgressACType
+    ToggleInProgressACType |
+    SavePhotoSuccessACType
 
 
 

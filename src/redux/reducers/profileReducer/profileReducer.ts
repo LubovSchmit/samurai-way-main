@@ -1,4 +1,4 @@
-import {ActionsType, DispatchType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
+import {ActionsType, DispatchType, PhotosType, ProfilePageType, ProfileType} from '../../reduxStore/reduxStore';
 import {profileAPI} from '../../../api/api';
 
 
@@ -11,6 +11,12 @@ export type SetUserStatusACType = {
     type: 'SET-USER-STATUS',
     status: string
 }
+
+export type SavePhotoSuccessACType = {
+    type: 'SAVE-PHOTO',
+    photos: PhotosType
+}
+
 
 
 //ACTION CREATORS
@@ -26,6 +32,13 @@ export const setUserStatus = (status: string): SetUserStatusACType => {
         status
     }
 }
+export const savePhotoSuccess = (photos: PhotosType): SavePhotoSuccessACType => {
+    return {
+        type: 'SAVE-PHOTO',
+        photos
+    }
+}
+
 
 
 //INITIAL STATE
@@ -64,6 +77,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
         case 'SET-USER-STATUS': {
             return {...state, status: action.status}
         }
+        case 'SAVE-PHOTO': {
+            return {...state, profile: {...state.profile, photos: action.photos}}
+        }
         default:
             return state;
     }
@@ -83,5 +99,11 @@ export const updateStatus = (status: string) => async (dispatch: DispatchType) =
     let data = await profileAPI.updateStatus(status)
     if (data.resultCode === 0) {
         dispatch(setUserStatus(status))
+    }
+}
+export const savePhoto = (file: File)=> async (dispatch: DispatchType)=> {
+    let data = await profileAPI.savePhoto(file)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos))
     }
 }

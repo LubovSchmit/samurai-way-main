@@ -7,26 +7,23 @@ type PropsType = {
     id: string
     newPostText: string | undefined
     likesCount: number
-    photo: string | null
+
 }
 
 export const Post = (props: PropsType) => {
-/*
-    let [updatedPostMessage, setUpdatedPostMessage] = useState(props.postText)
-    const changeDivToTextarea = () => {
-    }
-    const updatePostTextHandler = (e: ChangeEvent<HTMLTextAreaElement>)=> {
-        setUpdatedPostMessage(e.currentTarget.value)
-    }
-*/
+    /*
+        let [updatedPostMessage, setUpdatedPostMessage] = useState(props.postText)
+        const changeDivToTextarea = () => {
+        }
+        const updatePostTextHandler = (e: ChangeEvent<HTMLTextAreaElement>)=> {
+            setUpdatedPostMessage(e.currentTarget.value)
+        }
+    */
     return (
         <div className={style.postContainer}>
 
-            <div className={style.avaPost}>
-                <Ava  id={props.id} photo={props.photo}/>
-            </div>
 
-            <div className={style.text} >
+            <div className={style.text}>
                 {props.newPostText}
             </div>
 

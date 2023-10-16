@@ -3,15 +3,15 @@ import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
 import {Cover} from './cover/Cover';
 import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
-import {Route} from 'react-router-dom';
 import {Preloader} from '../../../../commun/preloader/Preloader';
-import PostsContainer from '../posts/PostsContainer';
 
 
 type PropsType = {
     profile: ProfileType
     status: string
     updateStatus: (status: string) => void
+    isOwner: boolean
+    savePhoto: (file: File) => void
 
 }
 
@@ -29,15 +29,14 @@ export const Profile = (props: PropsType) => {
             </div>
 
             <div className={style.personalInfo}>
-                <div>
-                    <AvaPersonalData profile={props.profile}
-                                     status={props.status}
-                                     updateStatus={props.updateStatus}
-                    />
-                </div>
-            </div>
-            <div>
-                <Route exact path={'/posts'} render={() => <PostsContainer/>}/>
+
+                <AvaPersonalData isOwner={props.isOwner}
+                                 profile={props.profile}
+                                 status={props.status}
+                                 updateStatus={props.updateStatus}
+                                 savePhoto={props.savePhoto}
+                />
+
             </div>
 
         </div>

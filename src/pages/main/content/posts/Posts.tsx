@@ -9,7 +9,6 @@ type PropsType = {
     userId: string
     posts: Array<PostType>
     newPostText: string | undefined
-    photo: string | null
     addPost: (newPostMessage: string) => void
 }
 
@@ -23,10 +22,10 @@ export const Posts = (props: PropsType) => {
 
     let postsElements = [...props.posts]
         .reverse()
-        .map(p => <Post key={p.userId} id={p.userId}
+        .map(p => <Post key={p.userId}
+                        id={p.userId}
                         newPostText={p.newPostText}
                         likesCount={p.likesCount}
-                        photo={props.photo}
         />)
 
     return (
