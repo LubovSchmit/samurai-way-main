@@ -19,8 +19,8 @@ export const AvaPersonalData = React.memo((props: PropsType) => {
         <div className={style.PersonalContainer}>
 
             <div className={style.avaStatusBlock}>
-                <div className={style.avaBlock}>
 
+                <div className={style.avaBlock}>
                     <Ava id={props.profile.userId}
                          isOwner={props.isOwner}
                          photo={props.profile.photos.small}
@@ -28,12 +28,11 @@ export const AvaPersonalData = React.memo((props: PropsType) => {
                     />
                 </div>
 
-
                 <div className={style.statusBlock}>
-
                     <ProfileStatus status={props.status}
                                    updateStatus={props.updateStatus}/>
                 </div>
+
             </div>
 
 

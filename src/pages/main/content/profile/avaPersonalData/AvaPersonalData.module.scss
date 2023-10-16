@@ -2,41 +2,32 @@
 
 
 .PersonalContainer {
-  margin-top: 10px;
+  margin-top: 20px;
   background-color: darkgrey;
   height: 100%;
   width: 100%;
   @include flex(column, space-between, center, wrap);
-  color: black;
+
 
   .avaStatusBlock {
     @include flex(column, space-between, center, wrap);
+
     .avaBlock {
       flex: 1;
-      /*   background-image: url('./../../../../../assets/images/ava.jpg');
-         background-size: cover;
-         background-position: center;*/
-      width: 60px;
-      height: 60px;
-      margin: 10px;
+        width: 80px;
+      height: 80px;
+      /*margin: 10px;*/
     }
 
-    .statusBlock:nth-of-type(3) {
-      flex: 3;
-      width: 100%;
-
-      background-color: darkgrey;
-      margin: 10px;
-
+    .statusBlock:nth-of-type(2) {
+      flex: 2;
+      margin: 30px;
     }
 
   }
 
 
-  .personalDataBlock:nth-of-type(2) {
-    flex: 2;
-  /*  width: 100%;*/
-
+  .personalDataBlock {
     background-color: darkgrey;
     margin: 10px;
 
