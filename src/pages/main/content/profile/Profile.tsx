@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Profile.module.scss';
 import {AvaPersonalData} from './avaPersonalData/AvaPersonalData';
-import {Cover} from './cover/Cover';
+
 import {ProfileType} from '../../../../redux/reduxStore/reduxStore';
 import {Preloader} from '../../../../commun/preloader/Preloader';
 
@@ -23,10 +23,6 @@ export const Profile = (props: PropsType) => {
 
     return (
         <div className={style.profileContainer}>
-
-            <div className={style.coverBlock}>
-                <Cover/>
-            </div>
 
             <div className={style.personalInfo}>
 
