@@ -1,6 +1,8 @@
 import React from 'react';
 import style from './PersonalData.module.scss';
-import {ProfileType} from '../../../../../../redux/reduxStore/reduxStore';
+import {ContactsType, ProfileType} from '../../../../../../redux/reduxStore/reduxStore';
+import Contact from '../contacts/Contact';
+
 
 type PropsType = {
     profile: ProfileType
@@ -15,22 +17,27 @@ export const PersonalData = (props: PropsType) => {
             </div>
 
 
-            <div>{props.profile.lookingForAJob}</div>
+            <div>
+                <b>Looking for a job:</b>
+                {props.profile.lookingForAJob ? ' yes' : ' no'}
+            </div>
+            {props.profile.lookingForAJob &&
+            <div>
+                <b>My professional skills:</b>
+                {props.profile.lookingForAJobDescription}
+            </div>
+            }
 
-            <div>{props.profile.lookingForAJobDescription}</div>
 
             <div>
                 <div className={style.headline}> Contacts:</div>
                 <div className={style.contacts}>
-                    <div>{props.profile.contacts.vk}</div>
-                    <div>{props.profile.contacts.facebook}</div>
-                    <div>{props.profile.contacts.github}</div>
-                    <div>{props.profile.contacts.instagram}</div>
-                    <div>{props.profile.contacts.youtube}</div>
-                    <div>{props.profile.contacts.twitter}</div>
-                    <div>{props.profile.contacts.mainLink}</div>
-            </div>
-
+                    {Object.keys(props.profile.contacts).map(key => {
+                        return <Contact key={key}
+                                        contactTitle={key}
+                                        contactValue={props.profile.contacts[key as keyof ContactsType]}/>
+                    })}
+                </div>
 
 
             </div>
